@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="boardAdvance"     template="/WEB-INF/views/boardAdvance/layout/layout.jsp"> 		
+		<put-attribute name="header" 	value="/WEB-INF/views/boardAdvance/layout/header.jsp" />			
+		<put-attribute name="footer" 	value="/WEB-INF/views/boardAdvance/layout/footer.jsp" />			
+	</definition>
+	
+	
+	<definition name="/boardAdvance/addBoard" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/addBoard.jsp"/> 					
+		<put-attribute name="title"   value="게시글 작성"/> 											
+	</definition>
+	
+	<definition name="/boardAdvance/boardList" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/boardList.jsp"/> 					
+		<put-attribute name="title"   value="게시글 목록"/> 											
+	</definition>
+	
+	<definition name="/boardAdvance/boardDetail" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/boardDetail.jsp"/> 					
+		<put-attribute name="title"   value="게시글 확인"/> 											
+	</definition>
+	
+	<definition name="/boardAdvance/boardAuthentication" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/boardAuthentication.jsp"/> 					
+		<put-attribute name="title"   value="게시글 인증"/> 											
+	</definition>
+	
+	<definition name="/boardAdvance/modifyBoard" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/modifyBoard.jsp"/> 					
+		<put-attribute name="title"   value="게시글 수정"/> 											
+	</definition>
+	
+	<definition name="/boardAdvance/removeBoard" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/removeBoard.jsp"/> 					
+		<put-attribute name="title"   value="게시글 삭제"/> 
+	</definition>
+	
+	<definition name="/boardAdvance/addReply" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/reply/addReply.jsp"/> 					
+		<put-attribute name="title"   value="댓글 등록"/> 
+	</definition>
+	
+	<definition name="/boardAdvance/modifyReply" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/reply/modifyReply.jsp"/> 					
+		<put-attribute name="title"   value="댓글 수정"/> 
+	</definition>
+	
+	<definition name="/boardAdvance/removeReply" extends="boardAdvance">												
+		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/reply/removeReply.jsp"/> 					
+		<put-attribute name="title"   value="댓글 삭제"/> 
+	</definition>
+	
+</tiles-definitions>

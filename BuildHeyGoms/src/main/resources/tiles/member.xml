@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="member"     template="/WEB-INF/views/member/layout/layout.jsp"> 		
+		<put-attribute name="header" 	value="/WEB-INF/views/member/layout/header.jsp" />			
+		<put-attribute name="footer" 	value="/WEB-INF/views/member/layout/footer.jsp" />			
+	</definition>
+	
+	<definition name="/member/mainMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/mainMember.jsp"/> 					
+		<put-attribute name="title"   value="메인"/> 											
+	</definition>
+	
+	<definition name="/member/registerMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/registerMember.jsp"/> 					
+		<put-attribute name="title"   value="회원가입"/> 											
+	</definition>
+	
+	<definition name="/member/loginMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/loginMember.jsp"/> 					
+		<put-attribute name="title"   value="로그인"/> 											
+	</definition>
+	
+	<definition name="/member/memberList" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/memberList.jsp"/> 					
+		<put-attribute name="title"   value="회원리스트"/> 											
+	</definition>
+	
+	<definition name="/member/modifyMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/modifyMember.jsp"/> 					
+		<put-attribute name="title"   value="회원정보 수정"/> 											
+	</definition>
+	
+	<definition name="/member/removeMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/contents/removeMember.jsp"/> 					
+		<put-attribute name="title"   value="회원탈퇴"/> 											
+	</definition>
+	
+	
+</tiles-definitions>

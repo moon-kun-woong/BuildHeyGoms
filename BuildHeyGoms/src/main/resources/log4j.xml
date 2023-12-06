@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="C:\\spring_mvc_log\\spring_mvc_training_log" />
+		<layout class="org.apache.log4j.PatternLayout">
+		  <param name="DatePattern"         value="'.'yyyy-MM-dd"/>
+		  <param name="ConversionPattern"   value="[%d{HH:mm:ss}][%-5p](%F:%L)-%m%n"/>
+		</layout>
+	</appender>	
+	
+	<!-- Application Loggers -->
+	<logger name="com.application.BuildHeyGoms">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="warn" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="warn" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="warn" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="warn" />
+	</logger>
+	
+	
+	
+	
+	
+	
+	<!-- 
+	
+		# SQL Logger
+	
+		[사용법]
+		
+		- 로그는 설정된 레벨의 이상 단계만 기록하므로 (DEBUG > INFO > WARN > ERROR > FATAL)
+		- 기록하고 싶은 로그의 level을 지정하여 로그를 남긴다.
+	 	- <appender-ref ref="파일로깅name명"/>과 같은 appender를 추가하여 파일에 부가적으로 로그를 저장한다.
+	-->
+	
+	
+	<!-- SQL 쿼리문을 로그로 남긴다. -->
+	<logger name="jdbc.sqlonly" additivity="false"> 
+		<level value="info"/> 
+		<appender-ref ref="console"/> 
+		<appender-ref ref="dailyFileAppender"/> 
+	</logger>
+	
+	<!-- SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 로그로 남긴다. -->
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console"/> 
+	</logger>
+	
+	<!-- ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 남긴다. (권장x) -->
+	<logger name="jdbc.audit" additivity="false"> 
+		<level value="warn"/>  
+		<appender-ref ref="console"/> 
+	</logger> 
+    
+    <!-- ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 남긴다. (권장x) -->
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="console"/> 
+	</logger>
+	
+	<!-- SQL 결과 조회된 데이터의 table을 로그로 남긴다. (권장x) -->
+	<logger name="jdbc.resultsettable" additivity="false"> 
+		<level value="warn"/>  
+		<appender-ref ref="console"/> 
+	</logger> 	
+	
+	
+	
+	
+	
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
