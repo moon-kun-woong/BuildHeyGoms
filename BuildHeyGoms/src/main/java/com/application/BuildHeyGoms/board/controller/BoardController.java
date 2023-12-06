@@ -23,7 +23,7 @@ public class BoardController {
 	
 	@GetMapping("/addBoard")
 	public ModelAndView addBoard(){
-		return new ModelAndView("board/addBoard");
+		return new ModelAndView("board/contents/addBoard");
 	}
 	
 	@PostMapping("/addBoard")
@@ -48,7 +48,7 @@ public class BoardController {
 	@GetMapping("/boardList")
 	public ModelAndView boardList(){
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/boardList");
+		mv.setViewName("board/contents/boardList");
 		
 //		List<BoardDTO> boardList = boardService.getBoardList();
 //		//단위 테스트
@@ -64,7 +64,7 @@ public class BoardController {
 	public ModelAndView boardDetail(@RequestParam("boardId") Long boardId) {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/boardDetail");
+		mv.setViewName("board/contents/boardDetail");
 		
 //		//단위 테스트
 //		BoardDTO boardDTO = boardService.getBoardDetail(boardId);
