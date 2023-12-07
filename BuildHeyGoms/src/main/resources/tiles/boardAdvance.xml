@@ -21,10 +21,6 @@
 		<put-attribute name="title"   value="게시글 작성"/> 											
 	</definition>
 	
-	<definition name="/boardAdvance/boardList" extends="boardAdvance">												
-		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/boardList.jsp"/> 					
-		<put-attribute name="title"   value="게시글 목록"/> 											
-	</definition>
 	
 	<definition name="/boardAdvance/boardDetail" extends="boardAdvance">												
 		<put-attribute name="body" value="/WEB-INF/views/boardAdvance/contents/board/boardDetail.jsp"/> 					
