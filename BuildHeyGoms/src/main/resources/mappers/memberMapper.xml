@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<insert id="insertMember" parameterType="MemberDTO">
+		INSERT INTO 
+				MEMBER 
+		VALUES (
+				#{memberId},
+				#{passwd},
+				#{profile},
+				#{memberNm},
+				#{sex},
+				#{birthDt},
+				#{hp},
+				#{smsstsYn},
+				#{email},
+				#{emailstsYn},
+				#{zipcode},
+				#{roadAddress},
+				#{jibunAddress},
+				#{namujiAddress},
+				NOW(),
+				#{activeAccountYN}
+		 )
+	</insert>	
+	
+	<select id="selectOneloginMember" parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="selectOneDuplicatedMemberCheck" parameterType="String" resultType="MemberDTO"> 
+		SELECT 
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="selectListMember" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+	</select>
+	
+	<select id="selectOneMember"  parameterType="String" resultType="MemberDTO">
+		SELECT
+				*
+		FROM
+				MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	</select>
+	
+	<update id="updateMember" parameterType="MemberDTO">
+		UPDATE
+				MEMBER
+		<set>
+			<if test='profile != null and !profile.equals("")'>
+				PROFILE = #{profile},
+			</if>
+			<if test='memberNm != null and !memberNm.equals("")'>
+				MEMBER_NM = #{memberNm},
+			</if>
+			<if test='sex != null and !sex.equals("")'>
+				SEX = #{sex}, 
+			</if>
+			<if test='birthDt != null and !birthDt.equals("")'>
+				BIRTH_DT = #{birthDt}, 
+			</if>
+			<if test='hp != null and !hp.equals("")'>
+				HP = #{hp},  
+			</if>
+			<if test='smsstsYn != null and !smsstsYn.equals("")'>
+				SMSSTS_YN = #{smsstsYn},  
+			</if>
+			<if test='email != null and !email.equals("")'>
+				EMAIL = #{email}, 
+			</if>
+			<if test='emailstsYn != null and !emailstsYn.equals("")'>
+				EMAILSTS_YN = #{emailstsYn},  
+			</if>
+			<if test='zipcode != null and !zipcode.equals("")'>
+				ZIPCODE = #{zipcode},  
+			</if>
+			<if test='roadAddress != null and !roadAddress.equals("")'>
+				ROAD_ADDRESS = #{roadAddress},
+			</if>
+			<if test='jibunAddress != null and !jibunAddress.equals("")'>
+				JIBUN_ADDRESS = #{jibunAddress},  
+			</if>
+			<if test='namujiAddress != null and !namujiAddress.equals("")'>
+				NAMUJI_ADDRESS = #{namujiAddress},  
+			</if>
+			<if test='activeAccountYN != null and !activeAccountYN.equals("")'>
+				ACTIVEACCOUNT_YN = #{activeAccountYN}
+			</if>
+		</set>
+		WHERE
+				MEMBER_ID = #{memberId}
+	</update>	
+
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM
+				MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	</delete>
+
+	<select id="selectListSearchMember" resultType="MemberDTO" parameterType="hashMap">
+		SELECT
+				*
+		FROM
+				MEMBER
+		<where>
+			<if test='searchKeyword.equals("memberId")'>
+				MEMBER_ID LIKE CONCAT ('%' , #{searchWord} , '%')
+			</if>
+			<if test='searchKeyword.equals("memberNm")'>
+				MEMBER_NM LIKE CONCAT ('%' , #{searchWord} , '%')
+			</if>
+			<if test='searchKeyword.equals("hp")'>
+				HP LIKE CONCAT ('%' , #{searchWord} , '%')
+			</if>
+			<if test='searchKeyword.equals("address")'>
+				(ROAD_ADDRESS LIKE CONCAT ('%' , #{searchWord} , '%') OR
+				JIBUN_ADDRESS LIKE CONCAT ('%' , #{searchWord} , '%') OR
+				NAMUJI_ADDRESS LIKE CONCAT ('%' , #{searchWord} , '%'))
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOneMemberCnt" parameterType="String" resultType="int">
+		SELECT
+				COUNT(MEMBER_ID)
+		FROM
+				MEMBER
+		WHERE 
+				LEFT(JOIN_DT , 10) = #{today}
+	</select>
+	
+
+</mapper>
