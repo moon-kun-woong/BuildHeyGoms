@@ -9,21 +9,16 @@ public class MemberDTO {
 
 		private String memberId;
 		private String passwd;
-		private String profile;
-		private String memberName;
+		private String memberNm;
 		private String sex;
 		private String birthDt;
 		private String hp;
-		private String smsstsYn;
 		private String email;
-		private String emailstsYn;
-		private String zipcode;
-		private String roadAddress;
-		private String jibunAddress;
-		private String namujiAddress;
+		private String address;
+		private String exercise;
 		private Date joinDt;
+		private String introduction;
 		private String activeAccountYN;
-		
 		public String getMemberId() {
 			return memberId;
 		}
@@ -36,17 +31,11 @@ public class MemberDTO {
 		public void setPasswd(String passwd) {
 			this.passwd = passwd;
 		}
-		public String getProfile() {
-			return profile;
-		}
-		public void setProfile(String profile) {
-			this.profile = profile;
-		}
 		public String getMemberNm() {
-			return memberName;
+			return memberNm;
 		}
 		public void setMemberNm(String memberNm) {
-			this.memberName = memberNm;
+			this.memberNm = memberNm;
 		}
 		public String getSex() {
 			return sex;
@@ -66,53 +55,35 @@ public class MemberDTO {
 		public void setHp(String hp) {
 			this.hp = hp;
 		}
-		public String getSmsstsYn() {
-			return smsstsYn;
-		}
-		public void setSmsstsYn(String smsstsYn) {
-			this.smsstsYn = smsstsYn;
-		}
 		public String getEmail() {
 			return email;
 		}
 		public void setEmail(String email) {
 			this.email = email;
 		}
-		public String getEmailstsYn() {
-			return emailstsYn;
+		public String getAddress() {
+			return address;
 		}
-		public void setEmailstsYn(String emailstsYn) {
-			this.emailstsYn = emailstsYn;
+		public void setAddress(String address) {
+			this.address = address;
 		}
-		public String getZipcode() {
-			return zipcode;
+		public String getExercise() {
+			return exercise;
 		}
-		public void setZipcode(String zipcode) {
-			this.zipcode = zipcode;
-		}
-		public String getRoadAddress() {
-			return roadAddress;
-		}
-		public void setRoadAddress(String roadAddress) {
-			this.roadAddress = roadAddress;
-		}
-		public String getJibunAddress() {
-			return jibunAddress;
-		}
-		public void setJibunAddress(String jibunAddress) {
-			this.jibunAddress = jibunAddress;
-		}
-		public String getNamujiAddress() {
-			return namujiAddress;
-		}
-		public void setNamujiAddress(String namujiAddress) {
-			this.namujiAddress = namujiAddress;
+		public void setExercise(String exercise) {
+			this.exercise = exercise;
 		}
 		public Date getJoinDt() {
 			return joinDt;
 		}
 		public void setJoinDt(Date joinDt) {
 			this.joinDt = joinDt;
+		}
+		public String getIntroduction() {
+			return introduction;
+		}
+		public void setIntroduction(String introduction) {
+			this.introduction = introduction;
 		}
 		public String getActiveAccountYN() {
 			return activeAccountYN;
@@ -123,12 +94,13 @@ public class MemberDTO {
 		
 		@Override
 		public String toString() {
-			return "MemberDTO [memberId=" + memberId + ", passwd=" + passwd + ", profile=" + profile + ", memberName="
-					+ memberName + ", sex=" + sex + ", birthDt=" + birthDt + ", hp=" + hp + ", smsstsYn=" + smsstsYn
-					+ ", email=" + email + ", emailstsYn=" + emailstsYn + ", zipcode=" + zipcode + ", roadAddress="
-					+ roadAddress + ", jibunAddress=" + jibunAddress + ", namujiAddress=" + namujiAddress + ", joinDt="
-					+ joinDt + ", activeAccountYN=" + activeAccountYN + "]";
+			return "MemberDTO [memberId=" + memberId + ", passwd=" + passwd + ", memberNm=" + memberNm + ", sex=" + sex
+					+ ", birthDt=" + birthDt + ", hp=" + hp + ", email=" + email + ", address=" + address
+					+ ", exercise=" + exercise + ", joinDt=" + joinDt + ", introduction=" + introduction
+					+ ", activeAccountYN=" + activeAccountYN + "]";
 		}
+		
+	
 
 		
 }
