@@ -13,6 +13,7 @@
 	<typeAliases>
 		<typeAlias type="com.application.BuildHeyGoms.board.dto.BoardDTO" 		alias="BoardDTO"/>
 		<typeAlias type="com.application.BuildHeyGoms.member.dto.MemberDTO" 	alias="MemberDTO"/>
+		<typeAlias type="com.application.BuildHeyGoms.trainer.dto.TrainerDTO" 	alias="TrainerDTO"/>
 	</typeAliases>	
 
 

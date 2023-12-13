@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="trainer">
+
+	<insert id="insertTrainer" parameterType="TrainerDTO">
+		INSERT INTO 
+				TRAINER 
+		VALUES (
+				#{trainerId},
+				#{passwd},
+				#{trainerNm},
+				#{sex},
+				#{birthDt},
+				#{hp},
+				#{email},
+				#{address},
+				#{businessLocation},
+				#{connectedMember},
+				#{careerBook},
+				NOW(),
+				#{introduction},
+				#{activeAccountYN}
+		 )
+	</insert>	
+	
+
+	<select id="selectOneloginTrainer" parameterType="String" resultType="TrainerDTO">
+		SELECT
+				*
+		FROM
+				TRAINER
+		WHERE
+				TRAINER_ID = #{trainerId}
+	</select>
+	
+	<select id="selectOneDuplicatedTrainerCheck" parameterType="String" resultType="TrainerDTO"> 
+		SELECT 
+				*
+		FROM
+				TRAINER
+		WHERE
+				TRAINER_ID = #{trainerId}
+	</select>
+	
+	<select id="selectListTrainer" resultType="TrainerDTO">
+		SELECT
+				*
+		FROM
+				TRAINER
+	</select>	
+	
+</mapper>
