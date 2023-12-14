@@ -19,6 +19,46 @@
             margin-right: 0.5rem; /* Adjust the margin to move the button slightly to the left */
         }
     </style>
+    
+    <script src="${contextPath }/resources/jquery/jquery-3.6.1.min.js"></script>
+    
+    
+    <script>
+
+		$().ready(function(){
+			$("#loginBtn").click(function(){
+				
+				var param = { // 파라메타
+						"memberId" : $("[name='memberId']").val(),
+						"passwd" : $("[name='passwd']").val(),
+				};
+				$.ajax({
+					url : "${contextPath}/member/loginMember",
+					type : "post",
+					data : param,
+					success : function(data) {
+						
+						if (data == "fail") {
+							$("#msg").html("<span style='color:red;'>아이디와 비밀번호를 확인하세요.</span>");
+							$("[name='memberId']").prop("disabled" , false);
+							$("[name='passwd']").prop("disabled" , false);
+						}
+						else {
+							location.href="${contextPath}/member/mainMember"
+							$("[name='memberId']").prop("disabled" , true);
+							$("[name='passwd']").prop("disabled" , true);
+						}
+					}
+					
+				});
+			});	
+			
+		});
+	
+	</script>
+    
+    
+    
 </head>
 <body class="bg-gray-50">
     <div class="container mx-auto p-4">
@@ -26,9 +66,15 @@
             <h1 class="text-2xl font-bold"><a href="${contextPath }/member/mainMember">buildHeyGo</a></h1>
         </header>
 
+		<div class="form-container w-full max-w-2xl mx-auto mt-10">
+	        <div class="flex justify-center space-x-4 mb-6">
+	            <button id="memberBtn" class="px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 active">Member</button>
+	            <button id="trainerBtn" class="px-4 py-2 rounded bg-gray-300 text-gray-700 font-semibold hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300" style="margin-right: -140px;">Trainer</button>
+	        </div>
+		
         <div class="flex justify-center items-center min-h-screen">
             <div class="w-full max-w-xs">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="${contextPath}/member/loginMember" method="post">
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class="mb-8">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             Username
@@ -41,8 +87,11 @@
                         </label>
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="passwd" id="password" type="password" placeholder="비밀번호를 입력하세요.">
                     </div>
+                    
+                    <p class="mb-2" id="msg"></p>
+                    
                     <div class="flex items-center justify-between">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="loginBtn" >
                             Sign In
                         </button>
                         <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 register-btn" href="${contextPath }/member/registerMember">

@@ -9,9 +9,9 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
-	
+	<!-- 경로 : \\var\\lib\\tomcat9\\webapps\\BuildHeyGoms_file_repo\\BuildHeyGoms_log -->
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="C:\\spring_mvc_log\\spring_mvc_training_log" />
+		<param name="File" value="C:\\BuildHeyGoms_file_repo\\BuildHeyGoms_log" />
 		<layout class="org.apache.log4j.PatternLayout">
 		  <param name="DatePattern"         value="'.'yyyy-MM-dd"/>
 		  <param name="ConversionPattern"   value="[%d{HH:mm:ss}][%-5p](%F:%L)-%m%n"/>

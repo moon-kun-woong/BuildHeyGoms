@@ -102,28 +102,20 @@ public class MemberController {
 	@ResponseBody
 	public String loginMember(MemberDTO memberDTO , HttpServletRequest request) throws Exception {
 		
-		String jsScript = "";
 		if (memberService.loginMember(memberDTO) != null) {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("memberId", memberDTO.getMemberId());
 			
-			jsScript += "<script>";
-			jsScript += "alert('You are logged in.');";
-			jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
-			jsScript += "</script>";
+			System.out.println("pass");
+			return "pass";
 			
 		} 
 		else {
 			
-			jsScript += "<script>";
-			jsScript += "alert('check your Id or Password!');";
-			jsScript += "history.go(-1);";
-			jsScript += "</script>";
-			
+			System.out.println("fail");
+			return "fail";
 		}
-		
-		return jsScript;
 		
 	}
 	
