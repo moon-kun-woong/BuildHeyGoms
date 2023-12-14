@@ -66,7 +66,7 @@
 		    });
 		});	
 		
-		$("memberForm").submit(function(){
+		$("#memberForm").submit(function(){
 			
 			if (!validateMemberId) {
 				alert("아이디를 확인해주세요.");
@@ -116,7 +116,7 @@
 		    });
 		});	
 		
-		$("trainerForm").submit(function(){
+		$("#trainerForm").submit(function(){
 			
 			if (!validateTrainerId) {
 				alert("아이디를 확인해주세요.");
@@ -275,7 +275,7 @@
 	    const trainerBtn = document.getElementById('trainerBtn');
 	    const memberForm = document.getElementById('memberForm');
 	    const trainerForm = document.getElementById('trainerForm');
-	
+		
 	    // 페이지 로드 시, Member 버튼을 선택한 상태로 설정
 	    memberForm.classList.remove('hidden');
 	    trainerForm.classList.add('hidden');
