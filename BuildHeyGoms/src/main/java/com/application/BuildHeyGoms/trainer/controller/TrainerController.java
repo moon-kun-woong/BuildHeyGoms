@@ -98,44 +98,36 @@ public class TrainerController {
 	
 	
 	@GetMapping("/loginTrainer")
-	public ModelAndView logintrainer() throws Exception {
+	public ModelAndView loginTrainer() throws Exception {
 		return new ModelAndView("/trainer/loginTrainer");
 	}
 	
 	
 	@PostMapping("/loginTrainer")
 	@ResponseBody
-	public String logintrainer(TrainerDTO trainerDTO , HttpServletRequest request) throws Exception {
+	public String loginTrainer(TrainerDTO trainerDTO , HttpServletRequest request) throws Exception {
 		
-		String jsScript = "";
 		if (trainerService.loginTrainer(trainerDTO) != null) {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("trainerId", trainerDTO.getTrainerId());
 			
-			jsScript += "<script>";
-			jsScript += "alert('You are logged in.');";
-			jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
-			jsScript += "</script>";
+			System.out.println("pass");
+			return "pass";
 			
 		} 
 		else {
 			
-			jsScript += "<script>";
-			jsScript += "alert('check your Id or Password!');";
-			jsScript += "history.go(-1);";
-			jsScript += "</script>";
-			
+			System.out.println("fail");
+			return "fail";
 		}
-		
-		return jsScript;
 		
 	}
 	
 	
 	@GetMapping("/logoutTrainer")
 	@ResponseBody
-	public String logouttrainer(HttpServletRequest request) throws Exception{
+	public String logoutTrainer(HttpServletRequest request) throws Exception{
 		
 		HttpSession session = request.getSession();
 		session.invalidate();

@@ -36,11 +36,11 @@ public class TrainerServiceImpl implements TrainerService{
 	
 	
 	@Override
-	public String checkOverlappedId(String TrainerId) throws Exception{
+	public String checkOverlappedId(String trainerId) throws Exception{
 		
 		String isOverLapped = "Y";
 		
-		if (trainerDAO.selectOneDuplicatedTrainerCheck(TrainerId) == null) {
+		if (trainerDAO.selectOneDuplicatedTrainerCheck(trainerId) == null) {
 			return "N";
 		}
 		

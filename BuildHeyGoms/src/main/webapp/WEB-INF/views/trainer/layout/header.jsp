@@ -11,10 +11,10 @@
 <body>
 
         <header class="flex justify-between items-center py-4">
-            <h1 class="text-2xl font-bold"><a href="${contextPath }/member/mainMember">buildHeyGo</a></h1>
+            <h1 class="text-2xl font-bold"><a href="${contextPath }/trainer/mainTrainer">buildHeyGo</a></h1>
 
 			<c:choose>
-				<c:when test="${sessionScope.memberId eq null }">
+				<c:when test="${sessionScope.trainerId eq null }">
 					<div>
 						<button
 							class="px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 mr-2">
@@ -27,8 +27,14 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div class="px-4 py-2 rounded border border-blue-500 text-blue-500 font-semibold hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
-						<a href="${contextPath }/member/logoutMember">logout</a>
+					<div>
+						<button
+							class="px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 mr-2">
+							<a href="${contextPath }/trainer/myInfoTrainer">MyPage</a>
+						</button>
+						<button class="px-4 py-2 rounded border border-blue-500 text-blue-500 font-semibold hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
+							<a href="${contextPath }/trainer/logoutTrainer">logout</a>
+						</button>
 					</div>
 				</c:otherwise>
 			</c:choose>
