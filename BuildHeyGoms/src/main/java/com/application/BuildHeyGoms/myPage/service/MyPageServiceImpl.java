@@ -19,19 +19,8 @@ public class MyPageServiceImpl implements MyPageService {
 	private MyPageDAO myPageDAO;
 	
 	@Override
-	public List<Map<String,Object>> getMyOrderList(String memberId) throws Exception {
-		return myPageDAO.selectListMyOrder(memberId);
-	}
-
-	@Override
-	public Map<String,Object> getMyOrderDetail(Map<String,Object> orderDetailMap) throws Exception {
-		return myPageDAO.selectOneMyOrder(orderDetailMap);
-	}
-
-	@Override
-	public String getEmailById(String memberId) throws Exception {
-		
-		return "";
+    public String getEmailById(String memberEmail)throws Exception {
+        return myPageDAO.getEmailById(memberEmail);
 	}
 	
 	

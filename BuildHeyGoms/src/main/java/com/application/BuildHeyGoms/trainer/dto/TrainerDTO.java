@@ -13,14 +13,18 @@ public class TrainerDTO {
 		private String sex;
 		private String birthDt;
 		private String hp;
+		private String smsstsYn;
 		private String email;
-		private String address;
-		private String businessLocation;
-		private String connectedMember;
+		private String emailstsYn;
+		private String zipcodeTrainer;
+		private String roadAddressTrainer;
+		private String jibunAddressTrainer;
+		private String namujiAddress;
 		private String careerBook;
-		private Date joinDt;
+		private Date   joinDt;
 		private String introduction;
 		private String activeAccountYN;
+		
 		
 		
 		public String getTrainerId() {
@@ -59,29 +63,47 @@ public class TrainerDTO {
 		public void setHp(String hp) {
 			this.hp = hp;
 		}
+		public String getSmsstsYn() {
+			return smsstsYn;
+		}
+		public void setSmsstsYn(String smsstsYn) {
+			this.smsstsYn = smsstsYn;
+		}
 		public String getEmail() {
 			return email;
 		}
 		public void setEmail(String email) {
 			this.email = email;
 		}
-		public String getAddress() {
-			return address;
+		public String getEmailstsYn() {
+			return emailstsYn;
 		}
-		public void setAddress(String address) {
-			this.address = address;
+		public void setEmailstsYn(String emailstsYn) {
+			this.emailstsYn = emailstsYn;
 		}
-		public String getBusinessLocation() {
-			return businessLocation;
+		public String getZipcodeTrainer() {
+			return zipcodeTrainer;
 		}
-		public void setBusinessLocation(String businessLocation) {
-			this.businessLocation = businessLocation;
+		public void setZipcodeTrainer(String zipcodeTrainer) {
+			this.zipcodeTrainer = zipcodeTrainer;
 		}
-		public String getConnectedMember() {
-			return connectedMember;
+		public String getRoadAddressTrainer() {
+			return roadAddressTrainer;
 		}
-		public void setConnectedMember(String connectedMember) {
-			this.connectedMember = connectedMember;
+		public void setRoadAddressTrainer(String roadAddressTrainer) {
+			this.roadAddressTrainer = roadAddressTrainer;
+		}
+		public String getJibunAddressTrainer() {
+			return jibunAddressTrainer;
+		}
+		public void setJibunAddressTrainer(String jibunAddressTrainer) {
+			this.jibunAddressTrainer = jibunAddressTrainer;
+		}
+		public String getNamujiAddress() {
+			return namujiAddress;
+		}
+		public void setNamujiAddress(String namujiAddress) {
+			this.namujiAddress = namujiAddress;
 		}
 		public String getCareerBook() {
 			return careerBook;
@@ -107,21 +129,17 @@ public class TrainerDTO {
 		public void setActiveAccountYN(String activeAccountYN) {
 			this.activeAccountYN = activeAccountYN;
 		}
+		
+		
 		@Override
 		public String toString() {
 			return "TrainerDTO [trainerId=" + trainerId + ", passwd=" + passwd + ", trainerNm=" + trainerNm + ", sex="
-					+ sex + ", birthDt=" + birthDt + ", hp=" + hp + ", email=" + email + ", address=" + address
-					+ ", businessLocation=" + businessLocation + ", connectedMember=" + connectedMember
-					+ ", careerBook=" + careerBook + ", joinDt=" + joinDt + ", introduction=" + introduction
-					+ ", activeAccountYN=" + activeAccountYN + "]";
+					+ sex + ", birthDt=" + birthDt + ", hp=" + hp + ", smsstsYn=" + smsstsYn + ", email=" + email
+					+ ", emailstsYn=" + emailstsYn + ", zipcodeTrainer=" + zipcodeTrainer + ", roadAddressTrainer="
+					+ roadAddressTrainer + ", jibunAddressTrainer=" + jibunAddressTrainer + ", namujiAddress="
+					+ namujiAddress + ", careerBook=" + careerBook + ", joinDt=" + joinDt + ", introduction="
+					+ introduction + ", activeAccountYN=" + activeAccountYN + "]";
 		}
-
-
-		
-		
-		
-		
-		
 		
 		
 }

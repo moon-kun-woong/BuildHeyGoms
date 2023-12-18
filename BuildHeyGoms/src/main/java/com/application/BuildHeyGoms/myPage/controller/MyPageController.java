@@ -42,7 +42,16 @@ public class MyPageController {
 	}
 	
 	
+	
+	
+	
+	@GetMapping("/getEmailById")
+	public String getEmailById(String memberEmail) throws Exception{
+		return myPageService.getEmailById(memberEmail);
+	}
+	
 	@PostMapping("/modifyInfo")
+	@ResponseBody
 	public ResponseEntity<Object> modifyInfo(MemberDTO memberDTO , HttpServletRequest request) throws Exception {
 
 		myPageService.modifyMyInfo(memberDTO);

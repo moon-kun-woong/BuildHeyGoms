@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
+import com.google.protobuf.TextFormat.ParseException;
 
 
 @Controller
@@ -67,12 +68,22 @@ public class MemberController {
 		memberDTO.setSex(multipartRequest.getParameter("sex"));
 		memberDTO.setBirthDt(multipartRequest.getParameter("birthDt"));
 		memberDTO.setHp(multipartRequest.getParameter("hp"));
-		memberDTO.setEmail(multipartRequest.getParameter("email"));
-		memberDTO.setAddress(multipartRequest.getParameter("address"));
-		memberDTO.setExercise(multipartRequest.getParameter("exercise"));
 		
+		if (multipartRequest.getParameter("smsstsYn") == null )  memberDTO.setSmsstsYn("N");
+		else													 memberDTO.setSmsstsYn("Y");
+		
+		memberDTO.setEmail(multipartRequest.getParameter("email"));
+		
+		if (multipartRequest.getParameter("emailstsYn") == null) memberDTO.setEmailstsYn("N");
+		else													 memberDTO.setEmailstsYn("Y");
+		
+		memberDTO.setZipcode(multipartRequest.getParameter("zipcode"));
+		memberDTO.setRoadAddress(multipartRequest.getParameter("roadAddress"));
+		memberDTO.setJibunAddress(multipartRequest.getParameter("jibunAddress"));
+		memberDTO.setNamujiAddress(multipartRequest.getParameter("namujiAddress"));
+		memberDTO.setExercise(multipartRequest.getParameter("exercise"));
 		memberDTO.setIntroduction(multipartRequest.getParameter("introduction"));
-		memberDTO.setActiveAccountYN(multipartRequest.getParameter("ActiveAccountYN"));
+		memberDTO.setActiveAccountYN("Y");
 		
 		memberService.addMember(memberDTO);
 		

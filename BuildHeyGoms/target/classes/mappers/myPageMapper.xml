@@ -2,45 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="myPage">
-
-	<resultMap type="hashmap" id="myOrderListMap">
-		<result column="ORDER_CD" 		 property="orderCd"/>
-		<result column="MEMBER_ID" 		 property="memberId"/>
-		<result column="ORDER_GOODS_QTY" property="orderGoodsQty"/>
-		<result column="PAYMENT_AMT" 	 property="paymentAmt"/>
-		<result column="PAY_ORDER_TIME"  property="payOrderTime"/>
-		<result column="GOODS_CD" 		 property="goodsCd"/>
-		<result column="GOODS_NM" 		 property="goodsNm"/>
-		<result column="PRICE" 		 	 property="price"/>
-		<result column="GOODS_FILE_NAME" property="goodsFileName"/>
-	</resultMap>
-
-	<select id="selectListMyOrder" parameterType="String" resultMap="myOrderListMap">
-		SELECT
-				O.ORDER_CD 		  	AS ORDER_CD,
-				O.MEMBER_ID			AS MEMBER_ID,
-		        O.ORDER_GOODS_QTY 	AS ORDER_GOODS_QTY,
-		        O.PAYMENT_AMT 		AS PAYMENT_AMT,
-		        O.PAY_ORDER_TIME  	AS PAY_ORDER_TIME,
-		        G.GOODS_CD  	  	AS GOODS_CD,
-		        G.GOODS_NM  	  	AS GOODS_NM,
-		        G.PRICE				AS PRICE,
-		        G.GOODS_FILE_NAME 	AS GOODS_FILE_NAME
-		FROM
-				`ORDER` O
-			JOIN GOODS  G
-				    ON  O.GOODS_CD = G.GOODS_CD
-				   AND  O.MEMBER_ID = #{memberId}
-	</select>
 	
-	
-	<select id="selectOneEmail" parameterType="String" resultType="String">
+	<select id="getEmailById" parameterType="String" resultType="String">
 		SELECT
-				*
+				Email
 		FROM
 				MEMBER
 		WHERE
-				MEMBER_Email = #{memberEmail}
+				Email = #{memberEmail}
 	
 	</select>
 	

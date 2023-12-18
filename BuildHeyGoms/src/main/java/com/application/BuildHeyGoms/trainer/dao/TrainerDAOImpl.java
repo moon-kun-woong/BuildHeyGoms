@@ -12,6 +12,7 @@ import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
 
 @Repository
+@Transactional
 public class TrainerDAOImpl implements TrainerDAO {
 
 	@Autowired

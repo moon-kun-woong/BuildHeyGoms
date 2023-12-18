@@ -24,9 +24,10 @@ public class MyPageDAOImpl implements MyPageDAO {
 		return sqlSession.selectOne("myPage.selectOneMyOrder" , orderDetailMap);
 	}
 
+
 	@Override
-	public String selectOneMyEmail(String memberId) throws Exception {
-		return sqlSession.selectOne("myPage.getEmailById", memberId);
+	public String getEmailById(String memberEmail) throws Exception {
+		return sqlSession.selectOne("myPage.getEmailById", memberEmail);
 	}
 
 

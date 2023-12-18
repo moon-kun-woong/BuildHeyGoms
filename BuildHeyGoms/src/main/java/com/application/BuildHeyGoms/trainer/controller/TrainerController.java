@@ -69,15 +69,22 @@ public class TrainerController {
 		trainerDTO.setSex(multipartRequest.getParameter("sex"));
 		trainerDTO.setBirthDt(multipartRequest.getParameter("birthDt"));
 		trainerDTO.setHp(multipartRequest.getParameter("hp"));
+		
+		if (multipartRequest.getParameter("smsstsYn") == null )  trainerDTO.setSmsstsYn("N");
+		else													 trainerDTO.setSmsstsYn("Y");
+		
 		trainerDTO.setEmail(multipartRequest.getParameter("email"));
-		trainerDTO.setAddress(multipartRequest.getParameter("address"));
-		trainerDTO.setBusinessLocation(multipartRequest.getParameter("businessLocation"));
-		trainerDTO.setConnectedMember(multipartRequest.getParameter("connectedMember"));
+		
+		if (multipartRequest.getParameter("emailstsYn") == null) trainerDTO.setEmailstsYn("N");
+		else													 trainerDTO.setEmailstsYn("Y");
+		
+		trainerDTO.setZipcodeTrainer(multipartRequest.getParameter("zipcodeTrainer"));
+		trainerDTO.setRoadAddressTrainer(multipartRequest.getParameter("roadAddressTrainer"));
+		trainerDTO.setJibunAddressTrainer(multipartRequest.getParameter("jibunAddressTrainer"));
+		trainerDTO.setNamujiAddress(multipartRequest.getParameter("namujiAddress"));
 		trainerDTO.setCareerBook(multipartRequest.getParameter("careerBook"));
-//		@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-//		trainerDTO.setJoinDt(joinDt);
 		trainerDTO.setIntroduction(multipartRequest.getParameter("introduction"));
-		trainerDTO.setActiveAccountYN(multipartRequest.getParameter("ActiveAccountYN"));
+		trainerDTO.setActiveAccountYN("Y");
 		
 		trainerService.addTrainer(trainerDTO);
 		

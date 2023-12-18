@@ -24,8 +24,255 @@
             }
         }
     </style>
+    
+    
+        <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            margin-top: 8px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+        .tab-button {
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+        }
+        .tab-button.active {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .tab-button:hover {
+            border-color: #e5e7eb;
+        }
+    </style>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            margin-top: 8px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button {
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+        }
+        .tab-button.active {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .tab-button:hover {
+            border-color: #e5e7eb;
+        }
+        .trainer-card {
+            border: 1px solid #e5e7eb;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .trainer-card img {
+            border-radius: 9999px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 16px;
+        }
+        .trainer-info {
+            flex-grow: 1;
+        }
+        .trainer-section {
+            margin-top: 32px;
+        }
+        .trainer-section h3 {
+            font-size: 1.25rem;
+            color: #374151;
+            margin-bottom: 16px;
+        }
+        .trainer-section-border {
+            height: 2px;
+            background-color: #e5e7eb;
+            margin: 32px 0;
+        }
+    </style>
+    
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            margin-top: 8px;
+            background-color: #ffffff;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button {
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+            background-color: #f3f4f6;
+        }
+        .tab-button.active {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .tab-button:hover {
+            border-color: #e5e7eb;
+        }
+        .trainer-card {
+            border: 1px solid #e5e7eb;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+        }
+        .trainer-card img {
+            border-radius: 9999px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 16px;
+        }
+        .trainer-info {
+            flex-grow: 1;
+        }
+        .trainer-section {
+            margin-top: 32px;
+        }
+        .trainer-section h3 {
+            font-size: 1.25rem;
+            color: #374151;
+            margin-bottom: 16px;
+        }
+        .trainer-section-border {
+            height: 2px;
+            background-color: #e5e7eb;
+            margin: 32px 0;
+        }
+        .button-secondary {
+            padding: 6px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            cursor: pointer;
+            margin-left: 8px;
+            background-color: #f3f4f6;
+        }
+        .button-logout {
+            background-color: #fdba74; /* Light orange */
+        }
+        .button-info {
+            background-color: #bfdbfe; /* Light blue */
+        }
+    </style>
+    
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            margin-top: 8px;
+            background-color: #ffffff;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button {
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+            background-color: #f3f4f6;
+        }
+        .tab-button.active {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .tab-button:hover {
+            border-color: #e5e7eb;
+        }
+        .chat-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #ffffff;
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-message {
+            max-width: 70%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 16px;
+            background-color: #f3f4f6;
+        }
+        .chat-message.user {
+            background-color: #bfdbfe;
+            align-self: flex-end;
+        }
+        .chat-message.other {
+            background-color: #e5e7eb;
+            align-self: flex-start;
+        }
+        .chat-input-container {
+            margin-top: 16px;
+        }
+        .chat-input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            border-radius: 9999px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .chat-send-button {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+    </style>
        
 	<script src="${contextPath }/resources/bootstrap/js/jquery-3.3.1.min.js"></script>
+	
 </head>
 
 <body class="bg-gray-50">

@@ -8,7 +8,7 @@ public interface MyPageDAO {
 	
 	public List<Map<String,Object>> selectListMyOrder(String memberId) throws Exception;
 	public Map<String,Object> selectOneMyOrder(Map<String,Object> orderDetailMap) throws Exception;
-	public String selectOneMyEmail(String memberId)throws Exception;
+	public String getEmailById(String memberEmail)throws Exception;
 	
 	
 }

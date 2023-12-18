@@ -12,9 +12,7 @@ import com.application.BuildHeyGoms.myPage.dto.ClassMemberDTO;
 @Repository
 public interface MyPageService {
 
-	public List<Map<String,Object>> getMyOrderList(String memberId) throws Exception;
-	public Map<String,Object> getMyOrderDetail(Map<String,Object> orderDetailMap) throws Exception;
-	public String getEmailById(String memberId) throws Exception;
+	public String getEmailById(String memberEmail) throws Exception;
 	public MemberDTO getMyInfo(String memberId) throws Exception;
 	public void modifyMyInfo(MemberDTO memberDTO) throws Exception;
 	public void removeMember(String memberId) throws Exception;
