@@ -24,6 +24,33 @@
             }
         }
     </style>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .border-b {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .grid-cols-7 > div {
+            border-right: 1px solid #e2e8f0;
+        }
+        .date-cell:hover {
+            background-color: #f0f4f8;
+            cursor: pointer;
+        }
+        .profile-upload {
+            background-color: #f9fafb;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.375rem; /* 6px */
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        .profile-upload:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
        
 	<script src="${contextPath }/resources/bootstrap/js/jquery-3.3.1.min.js"></script>
 </head>

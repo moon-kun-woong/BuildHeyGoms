@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
         <header class="flex justify-between items-center py-4">
             <h1 class="text-2xl font-bold"><a href="${contextPath }/member/mainMember">buildHeyGo</a></h1>
 

@@ -14,6 +14,16 @@
 		<put-attribute name="title"   value="메인"/> 											
 	</definition>
 	
+	<definition name="/trainer/videoList" extends="trainer">												
+		<put-attribute name="body" value="/WEB-INF/views/trainer/videoList.jsp"/> 					
+		<put-attribute name="title"   value="메인"/> 											
+	</definition>
+	
+	<definition name="/trainer/mainTrainerMakeSchedule" extends="trainer">												
+		<put-attribute name="body" value="/WEB-INF/views/trainer/mainTrainerMakeSchedule.jsp"/> 					
+		<put-attribute name="title"   value="메인"/> 											
+	</definition>
+	
 	<definition name="/trainer/registerTrainer" extends="trainer">												
 		<put-attribute name="body" value="/WEB-INF/views/member/registerMember.jsp"/> 					
 		<put-attribute name="title"   value="회원가입"/> 											

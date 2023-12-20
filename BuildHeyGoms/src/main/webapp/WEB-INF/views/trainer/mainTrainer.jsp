@@ -6,7 +6,7 @@
     // 오늘의 날짜 정보 가져오기
     java.util.Calendar cal = java.util.Calendar.getInstance();
     int currentYear = cal.get(java.util.Calendar.YEAR);
-    int currentMonth = cal.get(java.util.Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더합니다.
+    int currentMonth = cal.get(java.util.Calendar.MONTH); // 월은 0부터 시작하므로 1을 더합니다.
 %>
 
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
 
     // 현재 월과 연도 설정
     let currentYear = <%= currentYear %>;
-    let currentMonth = <%= currentMonth %> - 1;
+    let currentMonth = <%= currentMonth %>;
 
     // 스케줄 데이터 객체 설정 (현재는 더미 데이터 사용)
     const scheduleData = {
@@ -155,8 +155,13 @@
             }
 
             dateCell.addEventListener('click', () => {
+            	
+                const selectedDate = new Date(currentYear, currentMonth, day);
+                const formattedDate = `${selectedDate.getFullYear()}년  ${selectedDate.getMonth()}월  ${selectedDate.getDate()}일`;
+
+            	
                 // 날짜를 클릭했을 때 할 작업을 여기에 추가하세요.
-                alert(`날짜 ${day} 클릭!`);
+            	 location.href = "${contextPath}/trainer/mainTrainerMakeSchedule?selectedDate=" + encodeURIComponent(formattedDate);
             });
 
             calendarDay.appendChild(dateCell);
@@ -171,8 +176,10 @@
     
     function updateCurrentMonth() {
         const currentMonthElement = document.getElementById('currentYearMonth');
-        const displayedMonth = currentMonth + 1; // 월을 1을 더해서 표시
-        currentMonthElement.textContent = `${currentYear}-${displayedMonth < 10 ? '0' : ''}${displayedMonth}`;
+        const displayedMonth = currentMonth + 1; // 월을 1을 더합니다.
+        const yearString = currentYear.toString();
+        const monthString = displayedMonth < 10 ? '0' + displayedMonth : displayedMonth.toString();
+        currentMonthElement.textContent = yearString + '-' + monthString;
     }
     
     

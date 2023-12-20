@@ -3,12 +3,14 @@ package com.application.BuildHeyGoms.myPage.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
+
 
 public interface MyPageDAO {
 	
-	public List<Map<String,Object>> selectListMyOrder(String memberId) throws Exception;
-	public Map<String,Object> selectOneMyOrder(Map<String,Object> orderDetailMap) throws Exception;
-	public String getEmailById(String memberEmail)throws Exception;
-	
+	public MemberDTO selectOneMyInfoMember(String memberId) throws Exception;
+	public void updateMyInfo(MemberDTO memberDTO) throws Exception;
+	public void deleteMember(String memberId) throws Exception;
+
 	
 }

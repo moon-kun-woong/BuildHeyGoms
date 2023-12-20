@@ -24,6 +24,11 @@
 		<put-attribute name="title"   value="로그인"/> 											
 	</definition>
 	
+	<definition name="/member/videoList" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/videoList.jsp"/> 					
+		<put-attribute name="title"   value="비디오리스트"/> 											
+	</definition>
+	
 	<definition name="/member/memberList" extends="member">												
 		<put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp"/> 					
 		<put-attribute name="title"   value="회원리스트"/> 											

@@ -35,7 +35,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@GetMapping("/mainMember")
-	public ModelAndView main() throws Exception {
+	public ModelAndView mainMember() throws Exception {
 		return new ModelAndView("/member/mainMember");
 	}
 	
@@ -146,6 +146,12 @@ public class MemberController {
 		return jsScript;
 		
 	}	
+	
+	@GetMapping("/videoList")
+	public ModelAndView videoList() throws Exception {
+		return new ModelAndView("/member/videoList");
+	}
+	
 	
 	
 }

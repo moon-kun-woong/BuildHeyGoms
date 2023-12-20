@@ -3,18 +3,8 @@
 
 <mapper namespace="myPage">
 	
-	<select id="getEmailById" parameterType="String" resultType="String">
-		SELECT
-				Email
-		FROM
-				MEMBER
-		WHERE
-				Email = #{memberEmail}
 	
-	</select>
-	
-	
-  	<select id="selectOneMyInfo" parameterType="String" resultType="MemberDTO">
+  	<select id="selectOneMyInfoMember" parameterType="String" resultType="MemberDTO">
 		SELECT
 				*
 		FROM
@@ -33,14 +23,11 @@
 	      <if test='passwd != null and passwd != ""'>
 	        PASSWD = #{passwd},
 	      </if>
-	      <if test='point != null and point != ""'>
-	        POINT = #{point},
-	      </if>
 	      <if test='sex != null and sex != ""'>
 	        SEX = #{sex},
 	      </if>
-	      <if test='dateBirth != null and dateBirth != ""'>
-	        DATE_BIRTH = #{dateBirth},
+	      <if test='birthDt != null and birthDt != ""'>
+	        BIRTH_DT = #{birthDt},
 	      </if>
 	      <if test='hp != null and hp != ""'>
 	        HP = #{hp},
@@ -65,6 +52,12 @@
 	      </if>
 	      <if test='namujiAddress != null and namujiAddress != ""'>
 	        NAMUJI_ADDRESS = #{namujiAddress},
+	      </if>
+	      <if test='exercise != null and exercise != ""'>
+	        EXERCISE = #{exercise},
+	      </if>
+	      <if test='introduction != null and introduction != ""'>
+	        INTRODUCTION = #{introduction},
 	      </if>
 	    </set>
 		WHERE 

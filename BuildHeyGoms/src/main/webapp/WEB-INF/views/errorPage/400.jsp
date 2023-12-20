@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>404</title>
+<title>400</title>
 </head>
 <body>
 	<div align="center">

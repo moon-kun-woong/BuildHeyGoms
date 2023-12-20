@@ -13,15 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
-import com.application.BuildHeyGoms.myPage.dto.ClassMemberDTO;
 import com.application.BuildHeyGoms.myPage.service.MyPageService;
+import com.mysql.cj.Session;
 
 
 @Controller
@@ -35,23 +34,25 @@ public class MyPageController {
 	private MemberService memberService;
 	
 	@GetMapping("/myInfoMember")
-	public ModelAndView main() throws Exception {
-		
-		return new ModelAndView("/myPage/myInfoMember");
-		
-	}
-	
-	
-	
-	
-	
-	@GetMapping("/getEmailById")
-	public String getEmailById(String memberEmail) throws Exception{
-		return myPageService.getEmailById(memberEmail);
+	public ModelAndView myInfoMember(HttpServletRequest request) throws Exception {
+	    HttpSession session = request.getSession();
+	    String memberId = (String) session.getAttribute("memberId");
+
+	    if (memberId != null) {
+	        MemberDTO memberDTO = myPageService.getMyInfo(memberId);
+
+	        ModelAndView mv = new ModelAndView("/myPage/myInfoMember");
+	        mv.addObject("memberDTO", memberDTO);
+
+	        return mv;
+	    } else {
+	        // 세션이 없는 경우 로그인 페이지로 리다이렉트 또는 예외 처리를 추가하세요.
+	        // 여기서는 세션이 없는 경우 로그인 페이지로 리다이렉트하는 예시를 보여줍니다.
+	        return new ModelAndView("redirect:/member/loginMember");
+	    }
 	}
 	
 	@PostMapping("/modifyInfo")
-	@ResponseBody
 	public ResponseEntity<Object> modifyInfo(MemberDTO memberDTO , HttpServletRequest request) throws Exception {
 
 		myPageService.modifyMyInfo(memberDTO);
@@ -61,7 +62,7 @@ public class MyPageController {
 		
 		String jsScript  = "<script>";
 				jsScript += " alert('수정되었습니다.');";
-				jsScript += " location.href='" + request.getContextPath() + "/myPage/myInfo?memberId=" + memberDTO.getMemberId() +  "';";
+				jsScript += " location.href='" + request.getContextPath() + "/myPage/myInfoMember?memberId=" + memberDTO.getMemberId() +  "';";
 				jsScript += " </script>";
 		
 		return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);

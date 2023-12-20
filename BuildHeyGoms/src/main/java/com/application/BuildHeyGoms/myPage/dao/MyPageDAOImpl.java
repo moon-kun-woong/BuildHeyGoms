@@ -7,27 +7,28 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
-	public List<Map<String,Object>> selectListMyOrder(String memberId) throws Exception {
-		return sqlSession.selectList("myPage.selectListMyOrder" , memberId);
+	public MemberDTO selectOneMyInfoMember(String memberId) throws Exception {
+		return sqlSession.selectOne("myPage.selectOneMyInfoMember" , memberId);
 	}
 
 	@Override
-	public Map<String,Object> selectOneMyOrder(Map<String,Object> orderDetailMap) throws Exception {
-		return sqlSession.selectOne("myPage.selectOneMyOrder" , orderDetailMap);
+	public void updateMyInfo(MemberDTO memberDTO) throws Exception {
+		sqlSession.update("myPage.updateMyInfo" , memberDTO);
 	}
 
 
 	@Override
-	public String getEmailById(String memberEmail) throws Exception {
-		return sqlSession.selectOne("myPage.getEmailById", memberEmail);
+	public void deleteMember(String memberId) throws Exception {
+		sqlSession.delete("myPage.deleteMember" , memberId);
 	}
 
 

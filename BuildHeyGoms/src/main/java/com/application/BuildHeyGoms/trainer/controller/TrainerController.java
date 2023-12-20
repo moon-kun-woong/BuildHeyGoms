@@ -149,4 +149,15 @@ public class TrainerController {
 	}	
 	
 	
+	@GetMapping("/videoList")
+	public ModelAndView videoList() throws Exception {
+		return new ModelAndView("/trainer/videoList");
+	}
+	
+	@GetMapping("/mainTrainerMakeSchedule")
+	public ModelAndView mainTrainerMakeSchedule() throws Exception {
+		return new ModelAndView("/trainer/mainTrainerMakeSchedule");
+	}
+	
+	
 }

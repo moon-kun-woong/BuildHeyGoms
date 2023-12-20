@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c"     uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 
 <!DOCTYPE html>
@@ -10,6 +11,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>buildHeyGo Fitness Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+  	<script src="${contextPath }/resources/jquery/jquery-3.6.1.min.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
+    <script>
+	function execDaumPostcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	
+	            var fullRoadAddr = data.roadAddress; 
+	            var extraRoadAddr = ''; 
+	
+	            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                extraRoadAddr += data.bname;
+	            }
+	            if (data.buildingName !== '' && data.apartment === 'Y'){
+	               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	            }
+	            if (extraRoadAddr !== ''){
+	                extraRoadAddr = ' (' + extraRoadAddr + ')';
+	            }
+	            if (fullRoadAddr !== ''){
+	                fullRoadAddr += extraRoadAddr;
+	            }
+	
+	            document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
+	            document.getElementById('roadAddress').value = fullRoadAddr;
+	            document.getElementById('jibunAddress').value = data.jibunAddress;
+	          
+	        }
+	    }).open();
+	}
+    </script>
+    
     <style>
         .trainer-card:hover {
             transform: translateY(-5px);
@@ -56,6 +90,15 @@
         .tab-button:hover {
             border-color: #e5e7eb;
         }
+        
+        /* 스크롤 가능한 DIV의 스타일 설정 */
+   		.scrollable-div {
+        max-height: 600px; /* 원하는 높이 설정 */
+        overflow-y: auto; /* 세로 스크롤을 표시할지 여부 */
+        border: 1px solid #ccc; /* 테두리 스타일 설정 */
+        padding: 10px; /* 내부 여백 설정 */
+        word-wrap: break-word;
+    	}
     </style>
     
     <style>
@@ -115,6 +158,8 @@
             background-color: #e5e7eb;
             margin: 32px 0;
         }
+        
+        
     </style>
     
     
@@ -193,6 +238,7 @@
         .button-info {
             background-color: #bfdbfe; /* Light blue */
         }
+    
     </style>
     
     
@@ -269,9 +315,40 @@
             border: none;
             display: inline-block;
         }
+         .feedback-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* 긴 텍스트를 숨기고 스크롤 가능하게 만듭니다. */
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    max-height: 1000px; /* 원하는 높이로 설정하세요. */
+		    
+        	overflow-x: auto;
+   			max-width: 590px; /* 원하는 가로 폭으로 설정하세요. */
+   			
+	    	/* 텍스트 오버플로우를 처리하여 다음 줄로 줄 바꿈 */
+   		 	white-space: pre-line;
+   		 	overflow: visible; /* 텍스트를 자르지 않음 */
+        }
+        .feedback-date {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        /* 스크롤 가능한 DIV의 스타일 설정 */
+   		.scrollable-div {
+	        max-height: 600px; /* 원하는 높이 설정 */
+	        overflow-y: auto; /* 세로 스크롤을 표시할지 여부 */
+	        border: 1px solid #ccc; /* 테두리 스타일 설정 */
+	        padding: 10px; /* 내부 여백 설정 */
+	        word-wrap: break-word;
+    	}
     </style>
        
-	<script src="${contextPath }/resources/bootstrap/js/jquery-3.3.1.min.js"></script>
 	
 </head>
 
