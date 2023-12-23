@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dao.TrainerDAO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
@@ -66,6 +67,37 @@ public class TrainerServiceImpl implements TrainerService{
 	public List<TrainerDTO> getTrainerList() throws Exception {
 		return trainerDAO.selectListTrainer();
 	}
+
+	@Override
+	public void addClass(ClassDTO classDTO) {
+		trainerDAO.insertClass(classDTO);
+	}
+
+	@Override
+	public List<String> getClassSchedules(String trainerId) {
+		return trainerDAO.selectClassIdSchedules(trainerId);
+	}
+	
+	@Override
+	public ClassDTO getClassScheduleDetail(String selectedDate, String trainerId) {
+		return trainerDAO.selectClassScheduleDetail(selectedDate, trainerId);
+	}
+
+	@Override
+	public boolean modifyClassInfo(ClassDTO classDTO)throws Exception {
+		
+        int rowsAffected = trainerDAO.updateClassInfo(classDTO);
+
+        if (rowsAffected > 0) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+
+
+
+
 
 
 }

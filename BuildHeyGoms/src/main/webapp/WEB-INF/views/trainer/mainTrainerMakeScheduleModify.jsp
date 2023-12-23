@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video List</title>
+<title>수업 수정하기</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -51,7 +51,7 @@
             background-color: #45a049; /* Darker green */
         }
         
-                .cancel-button {
+        .cancel-button {
             background-color: #f3f4f6;
             color: #333;
         }
@@ -71,12 +71,12 @@
         .delete-button:hover {
             background-color: #d32f2f;
         }
+        
         .action-button {
             width: calc(50% - 4px);
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
-            width: 100%;
             border-radius: 4px;
             cursor: pointer;
         }
@@ -107,8 +107,8 @@
     
     <script>
     	function submitForm() {
-            var selectedDate = "${selectedDate }";
-            var userConfirmed = confirm(selectedDate + "로 수업을 잡으시겠습니까?");
+            var selectedDate = "${classDTO.selectedDate }";
+            var userConfirmed = confirm(selectedDate + "로 수업을 수정하시겠습니까?");
             
             if (userConfirmed) {
                 return true;
@@ -134,10 +134,10 @@
 	
         <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-3/5">
 	        <div class="mb-4">
-	            <h2 class="text-xl font-semibold">${selectedDate }</h2>
+	            <h2 class="text-xl font-semibold">${classDTO.selectedDate }</h2>
 	        </div>
 	        
-            <form id="classForm" action="${contextPath}/trainer/mainTrainerMakeSchedule" method="post" enctype="multipart/form-data" onsubmit="return submitForm();">
+            <form id="classForm" action="${contextPath}/trainer/mainTrainerMakeScheduleModify" method="post" enctype="multipart/form-data" onsubmit="return submitForm();">
 	            <div class="mb-4">
 	                <label for="profile-upload" class="profile-upload">
 	                    <input id="profile-upload" type="file" style="display: none;" />
@@ -146,28 +146,29 @@
 	            </div>
             	<div class="mb-4">
             		<label class="py-2">강의 이름</label>
-	                <input type="text" class="w-full p-2 border rounded" id="classNm" name="classNm" placeholder="class name" />
+	                <input type="text" class="w-full p-2 border rounded" id="classNm" name="classNm" value="${classDTO.classNm }" placeholder="class name" />
 	            </div>
 	            <div class="mb-4">
 	            	<label class="py-2">강의 내용</label>
-	                <textarea class="w-full p-2 border rounded" id="classContent" name="classContent" placeholder="Brief description of the exercises"></textarea>
+	                <textarea class="w-full p-2 border rounded" id="classContent" name="classContent" placeholder="Brief description of the exercises">${classDTO.classContent }</textarea>
 	            </div>
 	            <div class="mb-4">
 	            	<label class="py-2">트레이닝 장소</label>
-	                <input type="text" class="w-full p-2 border rounded" id="classLocation" name="classLocation" placeholder="Location" />
+	                <input type="text" class="w-full p-2 border rounded" id="classLocation" name="classLocation" value="${classDTO.classLocation }" placeholder="Location" />
 	            </div>
-					<input type="hidden" name="classId" id="classId" value="${trainerId }${selectedDate }" />
-					<input type="hidden" name="trainerId" id="trainerId" value="${trainerId }" />
-					<input type="hidden" name="selectedDate" id="selectedDate" value="${selectedDate }" />
+					<input type="hidden" name="classId" id="classId" value="${classDTO.classId }" />
+					<input type="hidden" name="trainerId" id="trainerId" value="${classDTO.trainerId }" />
+					<input type="hidden" name="selectedDate" id="selectedDate" value="${classDTO.selectedDate }" />
 					<p hidden="createClassDt" id="createClassDt"></p>
-					<input type="hidden" name="activeAccountYN" id="activeAccountYN" value="Y" />
+					<input type="hidden" name="activeAccountYN" id="activeAccountYN" value="${classDTO.activeAccountYN }" />
 	            <div class="mb-4">
 	                <button class="submit-button">submit</button>
 	            </div>
             </form>
-	            <div class="mb-4">
-	                <button class="action-button cancel-button" onclick="location.href='${contextPath}/trainer/mainTrainer'">취소하기</button>
-	            </div>
+	        <div class="mb-4">
+                <button class="delete-button">삭제하기</button>
+                <button class="action-button cancel-button" onclick="location.href='${contextPath}/trainer/mainTrainer'">취소하기</button>
+            </div>
 		</div>
 </body>
 </html>

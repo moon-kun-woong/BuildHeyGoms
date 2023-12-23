@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +26,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
+import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 import com.application.BuildHeyGoms.trainer.service.TrainerService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
@@ -35,10 +43,24 @@ public class TrainerController {
 	@Autowired
 	private TrainerService trainerService;
 	
+	
 	@GetMapping("/mainTrainer")
-	public ModelAndView main() throws Exception {
-		return new ModelAndView("/trainer/mainTrainer");
+	public ModelAndView myInfoMember(HttpServletRequest request) throws Exception {
+	    HttpSession session = request.getSession();
+	    String trainerId = (String) session.getAttribute("trainerId");
+
+	    // ObjectMapper를 사용하여 스케줄 데이터를 JSON 문자열로 변환
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    String scheduleDataJSON = objectMapper.writeValueAsString(trainerService.getClassSchedules(trainerId));
+
+	    ModelAndView mv = new ModelAndView("/trainer/mainTrainer");
+	    mv.addObject("scheduleDataJSON", scheduleDataJSON);
+
+	    System.out.println(mv);
+	    
+	    return mv;
 	}
+	
 	
 	@GetMapping("/registerTrainer")
 	public ModelAndView register() throws Exception{
@@ -154,10 +176,98 @@ public class TrainerController {
 		return new ModelAndView("/trainer/videoList");
 	}
 	
+	
+	
 	@GetMapping("/mainTrainerMakeSchedule")
-	public ModelAndView mainTrainerMakeSchedule() throws Exception {
-		return new ModelAndView("/trainer/mainTrainerMakeSchedule");
+	public ModelAndView mainTrainerMakeSchedule(@RequestParam("selectedDate") String selectedDate) throws Exception {
+		
+		ModelAndView mv = new ModelAndView("/trainer/mainTrainerMakeSchedule");
+		mv.addObject("selectedDate", selectedDate);
+		return mv;
 	}
+	
+	
+    @PostMapping("/mainTrainerMakeSchedule")
+    @ResponseBody
+	public String classes(HttpServletRequest request) throws Exception{
+
+    	ClassDTO classDTO = new ClassDTO();
+    	classDTO.setClassId(request.getParameter("classId"));
+    	classDTO.setClassNm(request.getParameter("classNm"));
+    	classDTO.setTrainerId(request.getParameter("trainerId"));
+    	classDTO.setSelectedDate(request.getParameter("selectedDate"));
+    	classDTO.setClassLocation(request.getParameter("classLocation"));
+    	classDTO.setClassContent(request.getParameter("classContent"));
+    	classDTO.setActiveAccountYN(request.getParameter("activeAccountYN"));
+		
+        String selectedDate = request.getParameter("selectedDate");
+				
+        trainerService.addClass(classDTO);
+        
+        
+		String jsScript = "<script>";
+			   jsScript += "alert('수업 내용이 갱신 되었습니다.');";
+			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+			   jsScript += "</script>";
+		   
+	   return jsScript;
+		
+	}	
+	
+	@GetMapping("/mainTrainerMakeScheduleModify")
+	public ModelAndView mainTrainerMakeScheduleModify(@RequestParam("selectedDate") String selectedDate , HttpServletRequest request) throws Exception {
+		
+	    HttpSession session = request.getSession();
+	    String trainerId = (String) session.getAttribute("trainerId");
+        
+	    ClassDTO classDTO = trainerService.getClassScheduleDetail(selectedDate, trainerId);
+	    
+	    ModelAndView mv = new ModelAndView("/trainer/mainTrainerMakeScheduleModify");
+	    mv.addObject("classDTO", classDTO);
+	    
+	    System.out.println(mv);
+	    
+	    return mv;
+	    
+	}
+	
+	
+    @PostMapping("/mainTrainerMakeScheduleModify")
+    public ResponseEntity<Object> submitUpdatedClass(@ModelAttribute("classDTO") ClassDTO classDTO, HttpServletRequest request) throws Exception {
+       
+    	// 업데이트 로직을 호출하고 결과를 받아옵니다.
+        boolean isUpdated = trainerService.modifyClassInfo(classDTO);
+
+        if (isUpdated) {
+        	
+            // 업데이트 성공 시 클라이언트에게 성공 메시지를 전송합니다.
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+
+            String jsScript = "<script>";
+            jsScript += " alert('수정되었습니다.');";
+            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+            jsScript += " </script>";
+
+            return new ResponseEntity<>(jsScript, responseHeaders, HttpStatus.OK);
+        } else {
+            // 업데이트 실패 시 클라이언트에게 실패 메시지를 전송합니다.
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+
+            String jsScript = "<script>";
+            jsScript += " alert('수정에 실패하였습니다.');";
+            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+            jsScript += " </script>";
+
+            return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);
+        }
+    }
+
+	
+    
+    
+
 	
 	
 }

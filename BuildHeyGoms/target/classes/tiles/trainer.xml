@@ -24,6 +24,11 @@
 		<put-attribute name="title"   value="메인"/> 											
 	</definition>
 	
+	<definition name="/trainer/mainTrainerMakeScheduleModify" extends="trainer">												
+		<put-attribute name="body" value="/WEB-INF/views/trainer/mainTrainerMakeScheduleModify.jsp"/> 					
+		<put-attribute name="title"   value="메인"/> 											
+	</definition>
+	
 	<definition name="/trainer/registerTrainer" extends="trainer">												
 		<put-attribute name="body" value="/WEB-INF/views/member/registerMember.jsp"/> 					
 		<put-attribute name="title"   value="회원가입"/> 											

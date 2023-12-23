@@ -53,4 +53,52 @@
 				TRAINER
 	</select>	
 	
+	
+	<insert id="insertClass" parameterType="ClassDTO">
+		INSERT INTO 
+				CLASS 
+		VALUES (
+				#{classId},
+				#{classNm},
+				#{trainerId},
+				#{selectedDate},
+				NOW(),
+				#{classLocation},
+				#{classContent},
+				#{activeAccountYN}
+		 )
+	</insert>
+
+	
+	<select id="selectClassIdSchedules" resultType="String" parameterType="String">
+		SELECT
+				SELECTED_DATE
+		FROM
+				CLASS
+		WHERE
+				TRAINER_ID = #{trainerId}
+	</select>
+	
+	
+	<select id="selectOneDetailClass" parameterType="string" resultType="ClassDTO">
+		SELECT
+				*
+		FROM
+				CLASS
+		WHERE
+				SELECTED_DATE = #{selectedDate}
+	</select>
+	
+	
+    <update id="updateClassInfo" parameterType="ClassDTO">
+        UPDATE 
+        		CLASS
+        SET
+	            CLASS_NM = #{classNm},
+	            CLASS_CONTENT = #{classContent},
+	            CLASS_LOCATION = #{classLocation}
+        WHERE
+            	CLASS_ID = #{classId}
+    </update>
+	
 </mapper>

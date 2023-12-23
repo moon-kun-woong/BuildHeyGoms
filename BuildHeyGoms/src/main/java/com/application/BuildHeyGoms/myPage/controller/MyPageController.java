@@ -46,8 +46,6 @@ public class MyPageController {
 
 	        return mv;
 	    } else {
-	        // 세션이 없는 경우 로그인 페이지로 리다이렉트 또는 예외 처리를 추가하세요.
-	        // 여기서는 세션이 없는 경우 로그인 페이지로 리다이렉트하는 예시를 보여줍니다.
 	        return new ModelAndView("redirect:/member/loginMember");
 	    }
 	}
