@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>수업 수정하기</title>
@@ -120,7 +120,15 @@
 
 	<script>
 	    function removeClass(classId) {
-            window.location.href = "${contextPath}/trainer/deleteClass?classId=" + classId;
+	    	
+	    	
+            var userDeleteConfirmed = confirm("정말로 삭제하시겠습니까?");
+            
+            if (userDeleteConfirmed) {
+                return window.location.href = "${contextPath}/trainer/deleteClass?classId=" + classId;
+            } else {
+    			return false;
+            }
 	    }
 	</script>
 

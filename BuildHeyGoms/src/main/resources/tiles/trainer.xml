@@ -33,12 +33,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/trainer/mainTrainerMakeScheduleModify.jsp"/> 					
 		<put-attribute name="title"   value="메인"/> 											
 	</definition>
-	
-	<definition name="/trainer/deleteClass" extends="trainer">												
-		<put-attribute name="body" value="/WEB-INF/views/trainer/deleteClass.jsp"/> 					
-		<put-attribute name="title"   value="메인"/> 											
-	</definition>
-	
+
 
 
 	

@@ -209,7 +209,6 @@ public class TrainerController {
         
 		String jsScript = "<script>";
 			   jsScript += "alert('갱신되었습니다.');";
-			   System.out.println(jsScript);
 			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
 			   jsScript += "</script>";
 		   

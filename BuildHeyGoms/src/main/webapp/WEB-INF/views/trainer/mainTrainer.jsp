@@ -44,6 +44,13 @@
 
 <body class="bg-gray-100">
 
+	<c:if test="${sessionScope.trainerId eq null}">
+		<script>
+			alert("로그인을 먼저 진행해주세요.");
+			location.href = "${contextPath}/member/loginMember";
+		</script>
+	</c:if>
+
 	<div class="bg-white p-4 rounded-lg shadow-md w-full md:w-3/4">
 	    <div class="flex justify-between items-center mb-4">
 	        <h2 class="text-xl font-semibold" id="currentYearMonth"></h2>
