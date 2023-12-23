@@ -47,7 +47,7 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="cart__btn update__btn d-flex justify-content-end" align="right">
-                <button href="javascript:removeMember();"  class="button-secondary button-logout mb-2"><span class="icon_trash_alt"></span>탈퇴</button>
+                <button onclick="removeMember();"  class="button-secondary button-logout mb-2"><span class="icon_trash_alt"></span>탈퇴</button>
             </div>
         </div>
 

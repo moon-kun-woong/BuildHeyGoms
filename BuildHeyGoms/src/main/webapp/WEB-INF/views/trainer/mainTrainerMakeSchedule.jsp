@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video List</title>
+<title>수업 만들기</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -113,7 +113,6 @@
             if (userConfirmed) {
                 return true;
             } else {
-    			window.history.go(-1);
     			return false;
             }
         }

@@ -113,11 +113,16 @@
             if (userConfirmed) {
                 return true;
             } else {
-    			window.history.go(-1);
     			return false;
             }
         }
     </script>
+
+	<script>
+	    function removeClass(classId) {
+            window.location.href = "${contextPath}/trainer/deleteClass?classId=" + classId;
+	    }
+	</script>
 
 </head>
 
@@ -166,7 +171,7 @@
 	            </div>
             </form>
 	        <div class="mb-4">
-                <button class="delete-button">삭제하기</button>
+                <button class="delete-button" onclick="removeClass('${classDTO.classId }')">삭제하기</button>
                 <button class="action-button cancel-button" onclick="location.href='${contextPath}/trainer/mainTrainer'">취소하기</button>
             </div>
 		</div>

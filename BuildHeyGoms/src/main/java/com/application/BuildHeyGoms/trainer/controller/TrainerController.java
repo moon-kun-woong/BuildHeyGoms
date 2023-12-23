@@ -204,9 +204,12 @@ public class TrainerController {
 				
         trainerService.addClass(classDTO);
         
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
         
 		String jsScript = "<script>";
-			   jsScript += "alert('수업 내용이 갱신 되었습니다.');";
+			   jsScript += "alert('갱신되었습니다.');";
+			   System.out.println(jsScript);
 			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
 			   jsScript += "</script>";
 		   
@@ -264,7 +267,22 @@ public class TrainerController {
         }
     }
 
-	
+	@GetMapping("/deleteClass")
+	public ResponseEntity<Object> deleteClass(@RequestParam("classId") String classId ,HttpServletRequest request) throws Exception {
+		
+		trainerService.deleteClass(classId);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String jsScript  = "<script>";
+				jsScript += "alert('수업을 삭제하였습니다.');";
+				jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+				jsScript += "</script>";
+		
+		return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);
+		
+	}
     
     
 

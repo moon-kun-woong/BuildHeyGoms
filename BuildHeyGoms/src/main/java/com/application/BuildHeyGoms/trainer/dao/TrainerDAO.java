@@ -16,15 +16,17 @@ public interface TrainerDAO {
 
 	public List<TrainerDTO> selectListTrainer() throws Exception;
 
-	public void insertClass(ClassDTO classDTO, String selectedDate);
+	public void insertClass(ClassDTO classDTO, String selectedDate)throws Exception;
 
-	public void insertClass(ClassDTO classDTO);
+	public void insertClass(ClassDTO classDTO)throws Exception;
 
-	public List<String> selectClassIdSchedules(String trainerId);
+	public List<String> selectClassIdSchedules(String trainerId)throws Exception;
 
-	public ClassDTO selectClassScheduleDetail(String selectedDate , String trainerId);
+	public ClassDTO selectClassScheduleDetail(String selectedDate , String trainerId)throws Exception;
 
 	public int updateClassInfo(ClassDTO classDTO)throws Exception;
+
+	public void deleteClass(String classId)throws Exception;
 
 
 

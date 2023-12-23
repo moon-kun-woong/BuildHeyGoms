@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dao.TrainerDAO;
@@ -69,17 +70,17 @@ public class TrainerServiceImpl implements TrainerService{
 	}
 
 	@Override
-	public void addClass(ClassDTO classDTO) {
+	public void addClass(ClassDTO classDTO)throws Exception {
 		trainerDAO.insertClass(classDTO);
 	}
 
 	@Override
-	public List<String> getClassSchedules(String trainerId) {
+	public List<String> getClassSchedules(String trainerId)throws Exception {
 		return trainerDAO.selectClassIdSchedules(trainerId);
 	}
 	
 	@Override
-	public ClassDTO getClassScheduleDetail(String selectedDate, String trainerId) {
+	public ClassDTO getClassScheduleDetail(String selectedDate, String trainerId) throws Exception {
 		return trainerDAO.selectClassScheduleDetail(selectedDate, trainerId);
 	}
 
@@ -93,6 +94,13 @@ public class TrainerServiceImpl implements TrainerService{
         } else {
             return false;
         }
+	}
+
+
+	@Override
+	@Transactional
+	public void deleteClass(String classId) throws Exception {
+		trainerDAO.deleteClass(classId);
 	}
 
 

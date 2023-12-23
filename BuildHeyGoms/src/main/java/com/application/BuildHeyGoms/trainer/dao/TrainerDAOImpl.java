@@ -48,25 +48,25 @@ public class TrainerDAOImpl implements TrainerDAO {
 
 
 	@Override
-	public void insertClass(ClassDTO classDTO, String selectedDate) {
+	public void insertClass(ClassDTO classDTO, String selectedDate)throws Exception {
 		sqlSession.insert("trainer.insertClass" , classDTO);
 	}
 
 
 	@Override
-	public void insertClass(ClassDTO classDTO) {
+	public void insertClass(ClassDTO classDTO)throws Exception {
 		sqlSession.insert("trainer.insertClass" ,classDTO);
 	}
 
 
 	@Override
-	public List<String> selectClassIdSchedules(String trainerId) {
+	public List<String> selectClassIdSchedules(String trainerId)throws Exception {
 		return sqlSession.selectList("trainer.selectClassIdSchedules", trainerId);
 	}
 
 	
 	@Override
-	public ClassDTO selectClassScheduleDetail(String selectedDate ,String trainerId) {
+	public ClassDTO selectClassScheduleDetail(String selectedDate ,String trainerId)throws Exception {
 	    Map<String, Object> params = new HashMap<>();
 	    params.put("selectedDate", selectedDate);
 		return sqlSession.selectOne("trainer.selectOneDetailClass", params);
@@ -76,6 +76,12 @@ public class TrainerDAOImpl implements TrainerDAO {
 	@Override
 	public int updateClassInfo(ClassDTO classDTO) throws Exception {
 		return sqlSession.update("trainer.updateClassInfo", classDTO);
+	}
+
+
+	@Override
+	public void deleteClass(String classId) throws Exception {
+		sqlSession.delete("trainer.deleteClass", classId);
 	}
 	
 

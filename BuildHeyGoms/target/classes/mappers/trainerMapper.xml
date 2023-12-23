@@ -100,5 +100,13 @@
         WHERE
             	CLASS_ID = #{classId}
     </update>
+    
+    <delete id="deleteClass" parameterType="String">
+    	DELETE FROM 
+    			CLASS 
+    	WHERE	
+    			CLASS_ID = #{classId}
+    </delete>
+    
 	
 </mapper>
