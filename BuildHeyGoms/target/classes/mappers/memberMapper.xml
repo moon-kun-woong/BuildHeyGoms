@@ -53,4 +53,23 @@
 				MEMBER
 	</select>	
 	
+	<select id="selectClassIdMemberSchedules" resultType="String" parameterType="String">
+		SELECT
+				SELECTED_DATE_CLASS_MEMBER
+		FROM
+				CLASS_MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	
+	</select>
+	
+    <select id="selectClassFindByDate" parameterType="string" resultType="ClassDTO">
+        SELECT
+        		*
+        FROM 
+        		CLASS
+        WHERE 
+        		SELECTED_DATE = #{selectedDate}
+    </select>
+	
 </mapper>

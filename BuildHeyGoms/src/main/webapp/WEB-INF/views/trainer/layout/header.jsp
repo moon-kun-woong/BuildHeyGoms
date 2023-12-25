@@ -25,12 +25,13 @@
 							<a href="${contextPath }/member/registerMember">회원가입</a>
 						</button>
 					</div>
+					
 				</c:when>
 				<c:otherwise>
 					<div>
 						<button
 							class="px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 mr-2">
-							<a href="${contextPath }/trainer/myInfoTrainer">MyPage</a>
+							<a href="${contextPath }/myPage/myInfoTrainer">MyPage</a>
 						</button>
 						<button class="px-4 py-2 rounded border border-blue-500 text-blue-500 font-semibold hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
 							<a href="${contextPath }/trainer/logoutTrainer">logout</a>

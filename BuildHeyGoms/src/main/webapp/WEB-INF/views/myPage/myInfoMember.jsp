@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>buildHeyGo - My Page</title>
+    <title>buildHeyGo - My Page Member</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,6 +19,16 @@
 				location.href = "${contextPath}/myPage/removeMember?memberId=" + $("#memberId").val();
 			}
 		}
+		
+		
+		$("#modifyInfoForm").submit(function(){
+			
+			if ($("#smsstsYn").val() != "Y") {
+				$(this).val("N");
+			}
+			if ($("#emailstsYn").val() != "Y") {
+				$(this).val("N")
+			}
 </script>
 
 
@@ -35,7 +45,7 @@
 	<div class="bg-white p-10 rounded-lg shadow-md mb-4">
         <div class="flex justify-between items-center mb-4">
             <div>
-                <h2 class="text-xl font-semibold">My Page</h2>
+                <h2 class="text-xl font-semibold">회원님의 마이페이지</h2>
                 <p class="text-gray-600">${memberDTO.email }</p>
             </div>
             <div class="flex items-center" style="margin-left: auto;">
@@ -94,14 +104,8 @@
 				        <div class="checkout__order__widget">
 				         <label for="smsstsYn">
 				             BMS에서 발송하는 SMS 소식을 수신합니다.
-			                <c:choose>
-			                    <c:when test="${memberDTO.smsstsYn eq 'Y'}">
-			                        <input type="checkbox" id="smsstsYn" name="smsstsYn" value="Y" checked>
-			                    </c:when>
-			                    <c:otherwise>
-			                        <input type="checkbox" id="smsstsYn" name="smsstsYn" value="N" >
-			                    </c:otherwise>
-			                </c:choose>
+					        <input type="checkbox" id="smsstsYn" name="smsstsYn" value="Y" 
+					               <c:if test="${memberDTO.smsstsYn == 'Y'}">checked</c:if>> <!-- 체크박스 -->
 				             <span class="checkmark"></span>
 				         </label>
 				        </div>
@@ -114,14 +118,8 @@
 					<div class="checkout__order__widget">
 					    <label for="emailstsYn">
 					        BMS에서 발송하는 E-mail을 수신합니다.
-					        <c:choose>
-			                    <c:when test="${memberDTO.emailstsYn eq 'Y'}">
-			                        <input type="checkbox" id="emailstsYn" name="emailstsYn" value="Y" checked>
-			                    </c:when>
-			                    <c:otherwise>
-			                        <input type="checkbox" id="emailstsYn" name="emailstsYn" value="N">
-			                    </c:otherwise>
-			                </c:choose>
+					        <input type="checkbox" id="emailstsYn" name="emailstsYn" value="Y" 
+					               <c:if test="${memberDTO.emailstsYn == 'Y'}">checked</c:if>>
 					        <span class="checkmark"></span>
 					    </label>
 					    </div>

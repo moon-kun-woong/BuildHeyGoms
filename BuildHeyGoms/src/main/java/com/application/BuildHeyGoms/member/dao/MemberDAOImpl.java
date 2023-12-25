@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
+import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 
 
 @Repository
@@ -42,6 +43,18 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<MemberDTO> selectListMember() throws Exception {
 		return sqlSession.selectList("member.selectListMember");
+	}
+
+
+	@Override
+	public List<String> selectClassIdMemberSchedules(String memberId) throws Exception {
+		return sqlSession.selectList("member.selectClassIdMemberSchedules", memberId);
+	}
+
+
+	@Override
+	public List<ClassDTO> findTrainerClassesByDate(String selectedDate) throws Exception {
+		return sqlSession.selectList("member.selectClassFindByDate" , selectedDate);
 	}
 	
 

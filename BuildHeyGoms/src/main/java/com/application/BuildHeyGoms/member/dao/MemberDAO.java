@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
+import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 
 public interface MemberDAO {
 
@@ -14,6 +15,10 @@ public interface MemberDAO {
 	public Object selectOneDuplicatedMemberCheck(String memberId) throws Exception;
 
 	public List<MemberDTO> selectListMember() throws Exception;
+
+	public List<String> selectClassIdMemberSchedules(String memberId)throws Exception;
+
+	public List<ClassDTO> findTrainerClassesByDate(String selectedDate)throws Exception;
 
 
 

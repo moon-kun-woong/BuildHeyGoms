@@ -25,6 +25,7 @@
 							<a href="${contextPath }/member/registerMember">회원가입</a>
 						</button>
 					</div>
+					
 				</c:when>
 				<c:otherwise>
 					<div>

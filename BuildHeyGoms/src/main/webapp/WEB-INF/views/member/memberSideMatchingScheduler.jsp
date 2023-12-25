@@ -52,7 +52,7 @@
 
 <body class="bg-gray-100">
 
-	<c:if test="${sessionScope.trainerId eq null}">
+	<c:if test="${sessionScope.memberId eq null}">
 		<script>
 			alert("로그인을 먼저 진행해주세요.");
 			location.href = "${contextPath}/member/loginMember";
@@ -86,18 +86,6 @@
 	        <div class="font-bold text-center border-b">금</div>
 	        <div class="font-bold text-center border-b">토</div>
 	        <!-- 나머지 날짜 셀을 추가합니다. -->
-	    </div>
-	    <div class="border-t pt-4 mt-4 bg-gray-50 p-4 rounded-lg shadow-md">
-	        <h3 class="text-xl font-semibold mb-2">회원님의 질문</h3>
-	        <div class="bg-white p-4 rounded-lg shadow-md mb-2">
-	            <p>안녕하세요 강사님, 이러한 상황이었을 때 질문 드립니다.</p>
-	        </div>
-	        <div class="bg-white p-4 rounded-lg shadow-md mb-2">
-	            <p>안녕하세요 강사님, 대회영상 관련해 문자 드립니다.</p>
-	        </div>
-	        <div class="bg-white p-4 rounded-lg shadow-md mb-2">
-	            <p>헬스맨~.</p>
-	        </div>
 	    </div>
 	</div>
 	<script>
@@ -194,9 +182,9 @@
 	                
 	                
 		                if (daySchedule) {
-		                	location.href = contextPath + "/trainer/mainTrainerMakeScheduleModify?selectedDate=" + formattedDate;
+		                	location.href = contextPath + "/member/selectedClassDateTrainerList?selectedDate=" + formattedDate;
 		                } else {
-		                    location.href = contextPath + "/trainer/mainTrainerMakeSchedule?selectedDate=" + formattedDate;
+		                    location.href = contextPath + "/member/selectedClassDateTrainerList?selectedDate=" + formattedDate;
 		                }
 	            	
 	            });

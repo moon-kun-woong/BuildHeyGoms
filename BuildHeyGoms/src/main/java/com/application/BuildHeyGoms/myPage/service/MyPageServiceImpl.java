@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberServiceImpl;
 import com.application.BuildHeyGoms.myPage.dao.MyPageDAO;
-import com.application.BuildHeyGoms.myPage.dto.ClassMemberDTO;
+import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
@@ -45,6 +45,27 @@ public class MyPageServiceImpl implements MyPageService {
 	@Transactional
 	public void removeMember(String memberId) throws Exception {
 		myPageDAO.deleteMember(memberId);
+	}
+	
+	
+	
+	@Override
+	public TrainerDTO getMyInfoTrainer(String trainerId) throws Exception {
+		return myPageDAO.selectOneMyInfoTrainer(trainerId);
+	}
+	
+	@Override
+	public void modifyMyInfoTrainer(TrainerDTO trainerDTO) throws Exception {
+		if (trainerDTO.getSmsstsYn() == null) trainerDTO.setSmsstsYn("N"); 
+		if (trainerDTO.getEmailstsYn() == null) trainerDTO.setEmailstsYn("N");
+		trainerDTO.setPasswd(bCryptPasswordEncoder.encode(trainerDTO.getPasswd())); 
+		myPageDAO.updateMyInfoTrainer(trainerDTO);
+	}
+	
+	@Override
+	@Transactional
+	public void removeTrainer(String trainerId) throws Exception {
+		myPageDAO.deleteTrainer(trainerId);
 	}
 
 

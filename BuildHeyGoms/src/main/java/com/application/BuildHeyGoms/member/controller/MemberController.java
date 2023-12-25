@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
+import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.TextFormat.ParseException;
 
 
@@ -150,6 +153,35 @@ public class MemberController {
 	@GetMapping("/videoList")
 	public ModelAndView videoList() throws Exception {
 		return new ModelAndView("/member/videoList");
+	}
+	
+	
+	@GetMapping("/memberSideMatchingScheduler")
+	public ModelAndView memberSideMatchingScheduler(HttpServletRequest request) throws Exception {
+	    HttpSession session = request.getSession();
+	    String memberId = (String) session.getAttribute("memberId");
+
+	    // ObjectMapper를 사용하여 스케줄 데이터를 JSON 문자열로 변환
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    String scheduleDataJSON = objectMapper.writeValueAsString(memberService.getClassSchedules(memberId));
+
+	    ModelAndView mv = new ModelAndView("/member/memberSideMatchingScheduler");
+	    mv.addObject("scheduleDataJSON", scheduleDataJSON);
+
+	    return mv;
+	}
+	
+	
+	@GetMapping("/selectedClassDateTrainerList")
+	public ModelAndView selectedClassDateTrainerList(@RequestParam("selectedDate") String selectedDate) throws Exception {
+		
+		List<ClassDTO> classDTO = memberService.findTrainerClassesByDate(selectedDate);
+		
+		ModelAndView mv = new ModelAndView("/member/selectedClassDateTrainerList");
+		mv.addObject("selectedDate", selectedDate);
+		mv.addObject("classDTO", classDTO);
+		
+		return mv;
 	}
 	
 	

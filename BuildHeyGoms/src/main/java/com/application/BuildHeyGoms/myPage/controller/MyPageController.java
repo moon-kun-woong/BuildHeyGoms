@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
 import com.application.BuildHeyGoms.myPage.service.MyPageService;
+import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 import com.mysql.cj.Session;
 
 
@@ -87,6 +88,62 @@ public class MyPageController {
 		
 	}
 	
+	
+	
+	
+	@GetMapping("/myInfoTrainer")
+	public ModelAndView myInfoTrainer(HttpServletRequest request) throws Exception {
+	    HttpSession session = request.getSession();
+	    String trainerId = (String) session.getAttribute("trainerId");
+
+	    if (trainerId != null) {
+	        TrainerDTO trainerDTO = myPageService.getMyInfoTrainer(trainerId);
+
+	        ModelAndView mv = new ModelAndView("/myPage/myInfoTrainer");
+	        mv.addObject("trainerDTO", trainerDTO);
+
+	        return mv;
+	    } else {
+	        return new ModelAndView("redirect:/member/loginMember");
+	    }
+	}
+	
+	@PostMapping("/modifyInfoTrainer")
+	public ResponseEntity<Object> modifyInfoTrainer(TrainerDTO trainerDTO , HttpServletRequest request) throws Exception {
+
+		myPageService.modifyMyInfoTrainer(trainerDTO);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String jsScript  = "<script>";
+				jsScript += " alert('수정되었습니다.');";
+				jsScript += " location.href='" + request.getContextPath() + "/myPage/myInfoTrainer?trainerId=" + trainerDTO.getTrainerId() +  "';";
+				jsScript += " </script>";
+		
+		return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);
+		
+	}
+	
+	
+	@GetMapping("/removeTrainer")
+	public ResponseEntity<Object> removeTrainer(HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		session.invalidate(); 
+		
+		myPageService.removeTrainer(request.getParameter("trainerId"));
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String jsScript  = "<script>";
+				jsScript += "alert('탈퇴되었습니다.');";
+				jsScript += "location.href='" + request.getContextPath() + "/';";
+				jsScript += "</script>";
+		
+		return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);
+		
+	}
 
 	
 	

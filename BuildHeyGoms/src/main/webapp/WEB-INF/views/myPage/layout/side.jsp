@@ -51,7 +51,7 @@
                     <h2 class="font-semibold text-lg mb-4">Menu</h2>
                     <ul>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">나의 트레이너</li>
-                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">트레이너와 매칭</li>
+                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"><a href="${contextPath }/member/memberSideMatchingScheduler">트레이너와 매칭</a></li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">개인 식단 플래너</li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded video-list-link"><a href="${contextPath}/member/videoList">운동 영상 목록</a></li>
 				            <ul class="hidden video-list-submenu">
@@ -72,8 +72,8 @@
                 <nav class="bg-white shadow rounded-lg p-4">
                     <h2 class="font-semibold text-lg mb-4">Menu</h2>
                     <ul>
-                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"><a href="${contextPath}/trainer/mainTrainer">회원 관리</a></li>
-                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">P.T 모집하기</li>
+                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">회원 관리</li>
+                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"><a href="${contextPath}/trainer/mainTrainer">P.T 모집하기</a></li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">개인 식단 플래너</li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded video-list-link"><a href="${contextPath}/trainer/videoList">운동 영상 목록</a></li>
 				            <ul class="hidden video-list-submenu">

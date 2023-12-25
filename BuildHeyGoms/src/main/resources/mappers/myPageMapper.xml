@@ -71,4 +71,78 @@
 				MEMBER_ID = #{memberId}
 	</delete>
 	
+	
+	
+	
+  	<select id="selectOneMyInfoTrainer" parameterType="String" resultType="TrainerDTO">
+		SELECT
+				*
+		FROM
+				TRAINER
+		WHERE
+				TRAINER_ID = #{trainerId}
+	</select>
+	
+	<update id="updateMyInfoTrainer" parameterType="TrainerDTO">
+		UPDATE 
+	   			TRAINER
+	   <set> 
+	      <if test='trainerNm != null and trainerNm != ""'>
+	        TRAINER_NM = #{trainerNm},
+	      </if>
+	      <if test='passwd != null and passwd != ""'>
+	        PASSWD = #{passwd},
+	      </if>
+	      <if test='sex != null and sex != ""'>
+	        SEX = #{sex},
+	      </if>
+	      <if test='birthDt != null and birthDt != ""'>
+	        BIRTH_DT = #{birthDt},
+	      </if>
+	      <if test='hp != null and hp != ""'>
+	        HP = #{hp},
+	      </if>
+	      <if test='smsstsYn != null and smsstsYn != ""'>
+	        SMSSTS_YN = #{smsstsYn},
+	      </if>
+	      <if test='email != null and email != ""'>
+	        EMAIL = #{email},
+	      </if>
+	      <if test='emailstsYn != null and emailstsYn != ""'>
+	        EMAILSTS_YN = #{emailstsYn},
+	      </if>
+	      <if test='zipcodeTrainer != null and zipcodeTrainer != ""'>
+	        ZIPCODE_TRAINER = #{zipcodeTrainer},
+	      </if>
+	      <if test='roadAddressTrainer != null and roadAddressTrainer != ""'>
+	        ROAD_ADDRESS_TRAINER = #{roadAddressTrainer},
+	      </if>
+	      <if test='jibunAddressTrainer != null and jibunAddressTrainer != ""'>
+	        JIBUN_ADDRESS_TRAINER = #{jibunAddressTrainer},
+	      </if>
+	      <if test='namujiAddress != null and namujiAddress != ""'>
+	        NAMUJI_ADDRESS = #{namujiAddress},
+	      </if>
+	      <if test='careerBook != null and careerBook != ""'>
+	        CAREER_BOOK = #{careerBook},
+	      </if>
+	      <if test='introduction != null and introduction != ""'>
+	        INTRODUCTION = #{introduction},
+	      </if>
+	    </set>
+		WHERE 
+				TRAINER_ID = #{trainerId}
+	</update>
+	
+	<delete id="deleteTrainer" parameterType="String">
+		DELETE 
+				t, c
+		FROM 
+				TRAINER t
+		LEFT JOIN 
+				CLASS c ON t.TRAINER_ID = c.TRAINER_ID
+		WHERE 
+				t.TRAINER_ID = #{trainerId}
+	</delete>
+	
 </mapper>

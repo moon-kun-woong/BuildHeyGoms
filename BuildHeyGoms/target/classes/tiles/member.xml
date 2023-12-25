@@ -29,6 +29,19 @@
 		<put-attribute name="title"   value="비디오리스트"/> 											
 	</definition>
 	
+	<definition name="/member/memberSideMatchingScheduler" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/memberSideMatchingScheduler.jsp"/> 					
+		<put-attribute name="title"   value="가능한 날짜 선택"/> 											
+	</definition>
+	
+	<definition name="/member/selectedClassDateTrainerList" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/selectedClassDateTrainerList.jsp"/> 					
+		<put-attribute name="title"   value="가능한 날짜의 트레이너"/> 											
+	</definition>
+	
+	
+	
+	
 	<definition name="/member/memberList" extends="member">												
 		<put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp"/> 					
 		<put-attribute name="title"   value="회원리스트"/> 											
