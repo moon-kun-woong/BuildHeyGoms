@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.application.BuildHeyGoms.member.dao.MemberDAO;
+import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 
@@ -31,9 +32,6 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.insertMember(memberDTO);
 	}
 
-	
-	
-	
 	
 	@Override
 	public String checkOverlappedId(String memberId) throws Exception{
@@ -68,18 +66,21 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
-
 	@Override
 	public List<String> getClassSchedules(String memberId) throws Exception {
 		return memberDAO.selectClassIdMemberSchedules(memberId);
 	}
 
 
+	@Override
+	public List<ClassDTO> findTrainerClassesByDate(String selectedDate)throws Exception {
+		return memberDAO.findTrainerClassesByDate(selectedDate);
+	}
 
 
 
 	@Override
-	public List<ClassDTO> findTrainerClassesByDate(String selectedDate)throws Exception {
-		return memberDAO.findTrainerClassesByDate(selectedDate);
+	public void addClassMember(ClassMemberDTO classMemberDTO) throws Exception {
+		memberDAO.insertClassMember(classMemberDTO);
 	}
 }

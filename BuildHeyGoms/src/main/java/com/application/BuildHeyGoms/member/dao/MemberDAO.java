@@ -3,6 +3,7 @@ package com.application.BuildHeyGoms.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 
@@ -19,6 +20,8 @@ public interface MemberDAO {
 	public List<String> selectClassIdMemberSchedules(String memberId)throws Exception;
 
 	public List<ClassDTO> findTrainerClassesByDate(String selectedDate)throws Exception;
+
+	public void insertClassMember(ClassMemberDTO classMemberDTO)throws Exception;
 
 
 

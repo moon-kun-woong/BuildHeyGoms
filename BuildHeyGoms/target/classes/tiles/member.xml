@@ -39,6 +39,13 @@
 		<put-attribute name="title"   value="가능한 날짜의 트레이너"/> 											
 	</definition>
 	
+	<definition name="/member/selectedClassDateTrainerDetail" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/selectedClassDateTrainerDetail.jsp"/> 					
+		<put-attribute name="title"   value="가능한 날짜의 트레이너 디테일 정보"/> 											
+	</definition>
+	
+	
+	
 	
 	
 	

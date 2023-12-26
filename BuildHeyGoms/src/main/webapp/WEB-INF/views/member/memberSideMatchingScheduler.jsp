@@ -182,7 +182,7 @@
 	                
 	                
 		                if (daySchedule) {
-		                	location.href = contextPath + "/member/selectedClassDateTrainerList?selectedDate=" + formattedDate;
+		                	location.href = contextPath + "/member/selectedClassDateTrainerDetail?selectedDate=" + formattedDate;
 		                } else {
 		                    location.href = contextPath + "/member/selectedClassDateTrainerList?selectedDate=" + formattedDate;
 		                }

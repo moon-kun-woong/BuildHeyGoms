@@ -71,5 +71,18 @@
         WHERE 
         		SELECTED_DATE = #{selectedDate}
     </select>
+    
+    	<insert id="insertClassMember" parameterType="classMemberDTO">
+		INSERT INTO 
+				CLASS_MEMBER 
+		VALUES (
+				#{classMemberId},
+				#{classId},
+				#{memberId},
+				#{selectedDateClassMember},
+				NOW(),
+				#{question}
+		 )
+	</insert>
 	
 </mapper>

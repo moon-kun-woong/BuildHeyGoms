@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
@@ -184,6 +186,41 @@ public class MemberController {
 		return mv;
 	}
 	
+	@PostMapping("/selectedClassDateTrainerList")
+	@ResponseBody
+	public String selectedClassDateTrainerList(HttpServletRequest request) throws Exception {
+		
+		ClassMemberDTO classMemberDTO = new ClassMemberDTO();
+		
+		classMemberDTO.setClassMemberId(request.getParameter("classMemberId"));
+		classMemberDTO.setClassId(request.getParameter("classId"));
+		classMemberDTO.setMemberId(request.getParameter("memberId"));
+		classMemberDTO.setSelectedDateClassMember(request.getParameter("selectedDateClassMember"));
+		classMemberDTO.setQuestion(request.getParameter("question"));
+
+		memberService.addClassMember(classMemberDTO);
+		
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String jsScript = "<script>";
+			   jsScript += "alert('갱신되었습니다.');";
+			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+			   jsScript += "</script>";
+	   
+		return jsScript;
+	}
 	
+	@GetMapping("/selectedClassDateTrainerDetail")
+	public ModelAndView selectedClassDateTrainerDetail (@RequestParam("selectedDate") String selectedDate ) throws Exception{
+		
+		ClassMemberDTO classMemberDTO = memberService.findTrainerOneClassMemberByDate(selectedDate);
+		
+		ModelAndView mv = new ModelAndView("/member/selectedClassDateTrainerDetail");
+		mv.addObject("selectedDate", selectedDate);
+		mv.addObject("classMemberDTO", classMemberDTO);
+		
+		return mv;
+	}
 	
 }

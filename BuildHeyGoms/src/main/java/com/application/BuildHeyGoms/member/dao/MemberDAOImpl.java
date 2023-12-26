@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 
@@ -55,6 +56,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<ClassDTO> findTrainerClassesByDate(String selectedDate) throws Exception {
 		return sqlSession.selectList("member.selectClassFindByDate" , selectedDate);
+	}
+
+
+	@Override
+	public void insertClassMember(ClassMemberDTO classMemberDTO) throws Exception {
+		sqlSession.insert("member.insertClassMember", classMemberDTO);
 	}
 	
 
