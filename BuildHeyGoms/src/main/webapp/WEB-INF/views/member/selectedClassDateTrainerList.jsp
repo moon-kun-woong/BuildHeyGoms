@@ -104,8 +104,6 @@
 	<script>
 			function selectedClassDateTrainerList(){
 				if (confirm("수업일 : "+"${selectedDate }"+ "을 선택하시겠습니까?")) {
-					alert('수업을 추가하였습니다.');
-					location.href="${contextPath}/member/memberSideMatchingScheduler";
 					return true;		
 				}
 				else {
@@ -137,6 +135,7 @@
 				        		<input type="hidden" id="question" name="question" value=""/>
 					            <div class="trainer-card bg-white p-4 rounded-lg shadow transition duration-300 ease-in-out">
 					                <!-- Trainer 정보 표시 카드 -->
+					                <h2 class="font-semibold mb-2">${classDTO.trainerId} 트레이너 님</h2>
 					                <img src="https://source.unsplash.com/random/300x200?fitness" alt="트레이너 사진" class="rounded-lg mb-4">
 					                <h3 class="font-semibold mb-2">${classDTO.classNm}</h3>
 					                <div class="mb-2">

@@ -42,7 +42,7 @@
 	</c:if>
 
 <!-- Begin -->
-	<div class="bg-white p-10 rounded-lg shadow-md mb-4">
+	<div class="bg-white p-10 rounded-lg shadow-md mb-4 w-full md:w-3/5">
         <div class="flex justify-between items-center mb-4">
             <div>
                 <h2 class="text-xl font-semibold">회원님의 마이페이지</h2>
@@ -66,12 +66,6 @@
             <div class="grid grid-cols-4 gap-4">
                 <button class="tab-button active" data-target="edit-info">
                     	나의 정보 수정
-                </button>
-                <button class="tab-button" data-target="my-trainer">
-                    	나의 트레이너
-                </button>
-                <button class="tab-button" data-target="trainers-feedback">
-                    	트레이너의 피드백
                 </button>
                 <button class="tab-button" data-target="my-questions">
                     	나의 질문 사항
@@ -157,74 +151,6 @@
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">회원 정보 수정</button>
             </form>
-        </div>
-        
-        <!-- 나의 트레이너 -->
-        <div id="my-trainer" class="tab-content">
-            <div class="trainer-section">
-                <h3>현재 함께하는 트레이너</h3>
-                <div class="trainer-card">
-                    <img src="https://via.placeholder.com/80" alt="Trainer">
-                    <div class="trainer-info">
-                        <strong>*** 트레이너</strong>
-                        <p>나와 함께한 기간: D-3</p>
-                        <p>BuildHeyGo 인증 완료</p>
-                        <p>지역: 서울</p>
-                        <p>강의 참가 횟수: 2회</p>
-                        <p>평점: ⭐⭐⭐⭐</p>
-                    </div>
-	                <div>
-	                    <button class="button-secondary button-logout">탈퇴 요청</button>
-	                    <button class="button-secondary button-info">트레이너 정보</button>
-	                </div>
-                </div>
-            </div>
-            <div class="trainer-section-border"></div>
-            <div class="trainer-section">
-                <h3>함께했던 트레이너</h3>
-                <div class="trainer-card">
-                    <img src="https://via.placeholder.com/80" alt="Trainer">
-                    <div class="trainer-info">
-                        <strong>*** 트레이너</strong>
-                        <p>나와 함께한 기간: D-3</p>
-                        <p>BuildHeyGo 인증 완료</p>
-                        <p>지역: 서울</p>
-                        <p>강의 참가 횟수: 1회</p>
-                        <p>평점: ⭐</p>
-                    </div>
-	                <div>
-	                    <button class="button-secondary button-logout">트레이너 평가</button>
-	                    <button class="button-secondary button-info">트레이너 정보</button>
-	                </div>                    
-                </div>
-                <!-- Repeat for additional trainers as needed -->
-            </div>
-        </div>
-        
-        <!-- 트레이너의 피드백 -->
-        <div id="trainers-feedback" class="tab-content">
-        	<!-- 스크롤링 div -->
-        	<div class="scrollable-div">
-		        <!-- Example feedback card -->
-		        <div class="feedback-card" id="feedback-card">
-		            <div class="feedback-date">2023-04-01</div>
-		            <div class="feedback-card">
-	               		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-		            </div>
-		        </div>
-		        <div class="feedback-card" id="feedback-card2">
-		            <div class="feedback-date">2023-04-01</div>
-		            <div class="feedback-card">
-	               		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-		            </div>
-		        </div>
-		        <div class="feedback-card" id="feedback-card3">
-		            <div class="feedback-date">2023-04-01</div>
-		            <div class="feedback-card">
-	               		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-		            </div>
-		        </div>
-	        </div>
         </div>
         
         

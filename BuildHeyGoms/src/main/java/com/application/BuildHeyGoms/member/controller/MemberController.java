@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +25,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
+import com.application.BuildHeyGoms.member.dto.JoinRequestDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
+import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.TextFormat.ParseException;
 
@@ -94,7 +98,7 @@ public class MemberController {
 		
 		String jsScript = "<script>";
 			   jsScript += "alert('You are now a member.');";
-			   jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
+			   jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
 			   jsScript += "</script>";
 			   
 		return jsScript;
@@ -145,7 +149,7 @@ public class MemberController {
 		
 		String jsScript = "<script>";
 				jsScript += "alert('You are logged out.');";
-				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
+				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
 				jsScript += "</script>";
 		
 		return jsScript;
@@ -191,6 +195,7 @@ public class MemberController {
 	public String selectedClassDateTrainerList(HttpServletRequest request) throws Exception {
 		
 		ClassMemberDTO classMemberDTO = new ClassMemberDTO();
+//		JoinRequestDTO joinRequestDTO = new JoinRequestDTO();
 		
 		classMemberDTO.setClassMemberId(request.getParameter("classMemberId"));
 		classMemberDTO.setClassId(request.getParameter("classId"));
@@ -199,28 +204,96 @@ public class MemberController {
 		classMemberDTO.setQuestion(request.getParameter("question"));
 
 		memberService.addClassMember(classMemberDTO);
+//		memberService.searchTrainerIdByMemberId(new TrainerDTO());
+//		
+//		joinRequestDTO.setJoinRequestId(request.getParameter("classMemberId"));
+//	    joinRequestDTO.setMemberId(request.getParameter("memberId"));
+//	    joinRequestDTO.setTrainerId(request.getParameter("trainerId"));
+//	    joinRequestDTO.setSelectedDate(request.getParameter("selectedDateClassMember"));
+//	    joinRequestDTO.setSelectedDateClassMember(request.getParameter("selectedDateClassMember"));
+//	    joinRequestDTO.setIntrodution(request.getParameter("introdution"));
+//		
+//		
+//		memberService.addJoinRequest(joinRequestDTO);
 		
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		
 		String jsScript = "<script>";
-			   jsScript += "alert('갱신되었습니다.');";
-			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+			   jsScript += "location.href='" + request.getContextPath() + "/member/memberSideMatchingScheduler';";
 			   jsScript += "</script>";
 	   
 		return jsScript;
 	}
 	
 	@GetMapping("/selectedClassDateTrainerDetail")
-	public ModelAndView selectedClassDateTrainerDetail (@RequestParam("selectedDate") String selectedDate ) throws Exception{
+	public ModelAndView selectedClassDateTrainerDetail (@RequestParam("selectedDate") String selectedDate, HttpServletRequest request) throws Exception{
 		
-		ClassMemberDTO classMemberDTO = memberService.findTrainerOneClassMemberByDate(selectedDate);
+	    HttpSession session = request.getSession();
+	    String memberId = (String) session.getAttribute("memberId");
+		
+		ClassDTO classDTO = memberService.findOneClassMemberByDate(selectedDate, memberId);
 		
 		ModelAndView mv = new ModelAndView("/member/selectedClassDateTrainerDetail");
 		mv.addObject("selectedDate", selectedDate);
-		mv.addObject("classMemberDTO", classMemberDTO);
+		mv.addObject("memberId", memberId);
+		mv.addObject("classDTO", classDTO);
 		
+		
+		System.out.println(mv);
 		return mv;
 	}
+	
+	
+	
+    @GetMapping("/removeClassMember")
+    public ResponseEntity<Object> removeTrainer(@RequestParam("classId") String classId, HttpServletRequest request) throws Exception {
+        memberService.removeClassMember(classId);
+        
+		String jsScript  = "<script>";
+		jsScript += "location.href='" + request.getContextPath() + "/member/memberSideMatchingScheduler';";
+		jsScript += "</script>";
+
+		return new ResponseEntity<Object>(jsScript,HttpStatus.OK);
+		
+	}
+    
+    
+    
+    @GetMapping("/connectedAsMember")
+    public ModelAndView connectedAsMember(HttpSession session) throws Exception {
+        String memberId = (String) session.getAttribute("memberId");
+        List<ClassDTO> classDTO = memberService.getMyClasses(memberId);
+
+        ModelAndView mv = new ModelAndView("/member/connectedAsMember");
+        mv.addObject("classDTO", classDTO);
+        return mv;
+    }
+    
+    
+    
+    @GetMapping("/removeClassMemberOnConnectedAsMember")
+    public ResponseEntity<Object> removeClassMemberOnConnectedAsMember(@RequestParam("classId") String classId, HttpServletRequest request) throws Exception {
+    	memberService.removeClassMember(classId);
+    	
+    	String jsScript  = "<script>";
+    	jsScript += "location.href='" + request.getContextPath() + "/member/connectedAsMember';";
+    	jsScript += "</script>";
+    	
+    	return new ResponseEntity<Object>(jsScript,HttpStatus.OK);
+    	
+    }
+
+    @GetMapping("/viewTrainerInfo") // 트레이너 정보 버튼
+    public ModelAndView viewTrainerInfo(@RequestParam("classId") String classId) throws Exception {
+    	
+        TrainerDTO trainerDTO = memberService.getMyTrainerInfo(classId);
+
+        ModelAndView mv = new ModelAndView("/member/viewTrainerInfo");
+        mv.addObject("trainerDTO", trainerDTO);
+        return mv;
+    }
+    
+    
 	
 }

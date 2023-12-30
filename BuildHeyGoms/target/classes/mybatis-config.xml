@@ -16,6 +16,7 @@
 		<typeAlias type="com.application.BuildHeyGoms.trainer.dto.TrainerDTO" 		alias="TrainerDTO"/>
 		<typeAlias type="com.application.BuildHeyGoms.myPage.dto.ClassDTO" 			alias="ClassDTO"/>
 		<typeAlias type="com.application.BuildHeyGoms.member.dto.ClassMemberDTO" 	alias="ClassMemberDTO"/>
+		<typeAlias type="com.application.BuildHeyGoms.member.dto.JoinRequestDTO" 	alias="JoinRequestDTO"/>
 	</typeAliases>	
 
 

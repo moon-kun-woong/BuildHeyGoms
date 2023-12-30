@@ -112,7 +112,7 @@ public class TrainerController {
 		
 		String jsScript = "<script>";
 			   jsScript += "alert('You are now a trainer.');";
-			   jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
+			   jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
 			   jsScript += "</script>";
 			   
 		return jsScript;
@@ -163,7 +163,7 @@ public class TrainerController {
 		
 		String jsScript = "<script>";
 				jsScript += "alert('You are logged out.');";
-				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember'";
+				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
 				jsScript += "</script>";
 		
 		return jsScript;
@@ -208,8 +208,7 @@ public class TrainerController {
         responseHeaders.add("Content-Type", "text/html; charset=utf-8");
         
 		String jsScript = "<script>";
-			   jsScript += "alert('갱신되었습니다.');";
-			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+			   jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer';";
 			   jsScript += "</script>";
 		   
 	   return jsScript;
@@ -248,7 +247,7 @@ public class TrainerController {
 
             String jsScript = "<script>";
             jsScript += " alert('수정되었습니다.');";
-            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer';";
             jsScript += " </script>";
 
             return new ResponseEntity<>(jsScript, responseHeaders, HttpStatus.OK);
@@ -259,7 +258,7 @@ public class TrainerController {
 
             String jsScript = "<script>";
             jsScript += " alert('수정에 실패하였습니다.');";
-            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+            jsScript += " location.href='" + request.getContextPath() + "/trainer/mainTrainer';";
             jsScript += " </script>";
 
             return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);
@@ -275,8 +274,7 @@ public class TrainerController {
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		
 		String jsScript  = "<script>";
-				jsScript += "alert('수업을 삭제하였습니다.');";
-				jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer'";
+				jsScript += "location.href='" + request.getContextPath() + "/trainer/mainTrainer';";
 				jsScript += "</script>";
 		
 		return new ResponseEntity<Object>(jsScript, responseHeaders, HttpStatus.OK);

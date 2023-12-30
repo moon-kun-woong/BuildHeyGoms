@@ -1,6 +1,7 @@
 package com.application.BuildHeyGoms.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.application.BuildHeyGoms.member.dao.MemberDAO;
 import com.application.BuildHeyGoms.member.dto.ClassMemberDTO;
+import com.application.BuildHeyGoms.member.dto.JoinRequestDTO;
 import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
+import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -83,4 +86,39 @@ public class MemberServiceImpl implements MemberService{
 	public void addClassMember(ClassMemberDTO classMemberDTO) throws Exception {
 		memberDAO.insertClassMember(classMemberDTO);
 	}
+
+
+	@Override
+	public ClassDTO findOneClassMemberByDate(String selectedDate, String memberId) throws Exception {
+		return memberDAO.selectOneClassByDate(selectedDate, memberId);
+	}
+
+
+	@Override
+	public void removeClassMember(String classId) throws Exception {
+		memberDAO.deleteOneClassMember(classId);
+	}
+
+
+	@Override
+	public List<ClassDTO> getMyClasses(String memberId) throws Exception {
+		return memberDAO.selectMyClasses(memberId);
+	}
+
+
+
+//	@Override
+//	public void searchTrainerIdByMemberId(TrainerDTO trainerDTO) throws Exception {
+//		memberDAO.searchTrainerIdByMemberId(trainerDTO);
+//	}
+//
+//
+//	@Override
+//	public void addJoinRequest(JoinRequestDTO joinRequestDTO) throws Exception {
+//		memberDAO.insertJoinRequest(joinRequestDTO);
+//	}
+
+
+
+
 }

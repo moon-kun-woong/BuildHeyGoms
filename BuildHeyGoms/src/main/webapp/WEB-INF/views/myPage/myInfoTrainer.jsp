@@ -48,7 +48,7 @@
 	</c:if>
 	
 <!-- Begin -->
-	<div class="bg-white p-10 rounded-lg shadow-md mb-4">
+	<div class="bg-white p-10 rounded-lg shadow-md mb-4 w-full md:w-3/5">
         <div class="flex justify-between items-center mb-4">
             <div>
                 <h2 class="text-xl font-semibold">트레이너님의 마이페이지</h2>

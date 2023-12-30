@@ -45,6 +45,16 @@
 	</definition>
 	
 	
+	<definition name="/member/connectedAsMember" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/connectedAsMember.jsp"/> 					
+		<put-attribute name="title"   value="내 트레이너 리스트"/> 											
+	</definition>
+	
+	
+	<definition name="/member/viewTrainerInfo" extends="member">												
+		<put-attribute name="body" value="/WEB-INF/views/member/viewTrainerInfo.jsp"/> 					
+		<put-attribute name="title"   value="내 트레이너  정보"/> 											
+	</definition>
 	
 	
 	

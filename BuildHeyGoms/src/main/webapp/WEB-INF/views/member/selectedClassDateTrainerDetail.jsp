@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>강사님 선택</title>
+<title>선택한 강의</title>
 
 <style>
     body {
@@ -101,15 +101,11 @@
         });
     </script>
     
+	
 	<script>
-			function selectedClassDateTrainerList(){
-				if (confirm("수업일 : "+"${selectedDate }"+ "을 선택하시겠습니까?")) {
-					alert('수업을 추가하였습니다.');
-					location.href="${contextPath}/member/memberSideMatchingScheduler";
-					return true;		
-				}
-				else {
-					return false;
+			function removeClassMember(){
+				if (confirm("수업일 : "+"${selectedDate }"+ "을 취소하시겠습니까?")) {
+					location.href = "${contextPath}/member/removeClassMember?classId=" + $("#classId").val();
 				}
 			}
 	</script>    
@@ -119,47 +115,31 @@
 
 	    <div class="bg-white p-4 rounded-lg shadow-md w-full md:w-3/5">
 	        <div class="mb-4">
-	            <h2 class="text-xl font-semibold">${selectedDate } 에 수업 가능한 트레이너</h2>
+	            <h2 class="text-xl font-semibold">${selectedDate } 에 수업이 있습니다</h2>
 	        </div>
-	    	<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
-	    
+	    	<section class="grid grid-cols-1 md:grid-cols-1 gap-4">
 		        <!-- Trainer Card 1 -->
-				<c:choose>
-				    <c:when test="${not empty classDTO}">
-				        <!-- classList가 비어있지 않은 경우 -->
-				        <c:forEach items="${classDTO}" var="classDTO">
-				        	<form id="selectedClassDateTrainerList_${classDTO.classId}" action="${contextPath}/member/selectedClassDateTrainerList" method="post" enctype="multipart/form-data" onsubmit="return selectedClassDateTrainerList();">
-				        		
-				        		<input type="hidden" id="classMemberId" name="classMemberId" value="${memberId}${classDTO.classId }"/>
-				        		<input type="hidden" id="classId" name="classId" value="${classDTO.classId }"/>
-				        		<input type="hidden" id="memberId" name="memberId" value="${memberId }"/>
-				        		<input type="hidden" id="selectedDateClassMember" name="selectedDateClassMember" value="${selectedDate }"/>
-				        		<input type="hidden" id="question" name="question" value=""/>
-					            <div class="trainer-card bg-white p-4 rounded-lg shadow transition duration-300 ease-in-out">
-					                <!-- Trainer 정보 표시 카드 -->
-					                <img src="https://source.unsplash.com/random/300x200?fitness" alt="트레이너 사진" class="rounded-lg mb-4">
-					                <h3 class="font-semibold mb-2">${classDTO.classNm}</h3>
-					                <div class="mb-2">
-					                    <p class="text-gray-600">강의 내용</p>
-					                    <div class="bg-gray-200 p-2 rounded-lg text-gray-600">${classDTO.classContent}</div>
-					                </div>
-					                <p class="text-gray-600 mb-2">가능날짜: ${classDTO.selectedDate}</p>
-					                <p class="text-gray-600 mb-2">가격 : 1회 -  30,000￦</p>
-					                <button type="submit" onsubmit="selectedClassDateTrainerList();" class="mt-4 px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">매칭하기</button>
-					            </div>
-					            
-				            </form>
-				        </c:forEach>
-				    </c:when>
-				    <c:otherwise>
-				        <!-- classList가 비어있는 경우 -->
-				        <p>검색된 클래스가 없습니다.</p>
-				    </c:otherwise>
-				</c:choose>
-	
+        		<input type="hidden" id="classId" name="classId" value="${classDTO.classId }"/>
+        		<input type="hidden" id="selectedDateClassMember" name="selectedDateClassMember" value="${selectedDate }"/>
+        		<input type="hidden" id="question" name="question" value=""/>
+	            <div class="trainer-card bg-white p-4 rounded-lg shadow transition duration-300 ease-in-out">
+	                <!-- Trainer 정보 표시 카드 -->
+	                <h2 class="font-semibold mb-2">${classDTO.trainerId} 트레이너 님</h2>
+	                <img src="https://source.unsplash.com/random/800x200?fitness" alt="트레이너 사진" class="rounded-lg mb-4">
+	                <h3 class="font-semibold mb-2">${classDTO.classNm}</h3>
+	                <div class="mb-2">
+	                    <p class="text-gray-600">강의 내용</p>
+	                    <div class="bg-gray-200 p-2 rounded-lg text-gray-600">${classDTO.classContent}</div>
+	                </div>
+	                <p class="text-gray-600 mb-2">가능날짜: ${classDTO.selectedDate}</p>
+	                <p class="text-gray-600 mb-2">가격 : 1회 -  30,000￦</p>
+	                <button type="submit" onsubmit="#" class="mt-4 px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">강사님께 문의</button>
+	                <button onclick="removeClassMember();" class="mt-4 px-4 py-2 rounded bg-gray-400 text-white font-semibold hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">강의 취소하기</button>
+	            </div>
 			</section>
+			
             <div class="mb-4">
-                <button class="action-button cancel-button" onclick="location.href='${contextPath}/member/memberSideMatchingScheduler'">취소하기</button>
+                <button class="action-button cancel-button" onclick="location.href='${contextPath}/member/memberSideMatchingScheduler'">뒤로가기</button>
             </div>
 		</div>
 

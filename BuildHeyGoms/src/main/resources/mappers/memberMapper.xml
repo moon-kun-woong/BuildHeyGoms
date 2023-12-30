@@ -72,7 +72,7 @@
         		SELECTED_DATE = #{selectedDate}
     </select>
     
-    	<insert id="insertClassMember" parameterType="classMemberDTO">
+   	<insert id="insertClassMember" parameterType="classMemberDTO">
 		INSERT INTO 
 				CLASS_MEMBER 
 		VALUES (
@@ -84,5 +84,69 @@
 				#{question}
 		 )
 	</insert>
+	
+	<select id="selectOneClassByDate" resultType="classDTO" parameterType="map">
+	    SELECT
+	        c.*
+	    FROM
+	        CLASS c
+	    INNER JOIN
+	        CLASS_MEMBER cm ON c.CLASS_ID = cm.CLASS_ID
+	    WHERE
+	        cm.MEMBER_ID = #{memberId} AND
+	        cm.SELECTED_DATE_CLASS_MEMBER = #{selectedDate}
+	</select>
+	
+	
+    <delete id="deleteClassMember" parameterType="string">
+        DELETE FROM 
+        		CLASS_MEMBER
+        WHERE 
+        		CLASS_ID = #{classId}
+    </delete>
+    
+    
+    <select id="selectMyClasses" parameterType="string" resultType="ClassDTO">
+	    SELECT
+	        c.*
+	    FROM
+	        CLASS c
+	    INNER JOIN
+	        CLASS_MEMBER cm ON c.CLASS_ID = cm.CLASS_ID
+	    WHERE
+	        cm.MEMBER_ID = #{memberId}
+    </select>    
+	
+<!-- 	<select id="searchTrainerIdByMemberId" resultType="String" parameterType="joinRequestDTO">
+	
+		SELECT 
+				T.trainerId
+		FROM 
+				CLASS_MEMBER CM
+		INNER JOIN 
+				CLASS C ON CM.classId = C.classId
+		INNER JOIN 
+				TRAINER T ON C.trainerId = T.trainerId
+		WHERE 
+				CM.memberId = #{memberId}
+	
+	</select>
+	
+	
+	
+	<insert id="insertJoinRequest" parameterType="joinRequestDTO">
+	
+		INSERT INTO 
+				JOIN_REQUEST
+		VALUES (
+		    #{classMemberId},
+		    #{memberId},
+		    #{trainerId},
+		    #{selectedDateClassMember},
+		    #{selectedDateClassMember},
+		    ''
+		)
+	</insert> -->
+	
 	
 </mapper>
