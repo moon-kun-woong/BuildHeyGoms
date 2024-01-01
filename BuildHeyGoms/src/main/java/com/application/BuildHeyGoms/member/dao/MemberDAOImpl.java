@@ -89,6 +89,12 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 
+	@Override
+	public TrainerDTO selectOneTrainerInfo(String trainerId) throws Exception {
+		return sqlSession.selectOne("member.selectOneTrainerInfo",trainerId);
+	}
+
+
 //	@Override
 //	public void searchTrainerIdByMemberId(TrainerDTO trainerDTO) {
 //		sqlSession.selectOne("member.searchTrainerIdByMemberId", trainerDTO);

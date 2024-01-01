@@ -31,6 +31,8 @@ public interface MemberDAO {
 
 	public List<ClassDTO> selectMyClasses(String memberId)throws Exception;
 
+	public TrainerDTO selectOneTrainerInfo(String trainerId)throws Exception;
+
 //	public void searchTrainerIdByMemberId(TrainerDTO trainerDTO);
 //
 //	public void insertJoinRequest(JoinRequestDTO joinRequestDTO)throws Exception;

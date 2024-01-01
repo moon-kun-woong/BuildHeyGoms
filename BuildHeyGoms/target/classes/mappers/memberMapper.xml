@@ -116,6 +116,17 @@
 	    WHERE
 	        cm.MEMBER_ID = #{memberId}
     </select>    
+    
+    <select id="selectOneTrainerInfo" parameterType="string" resultType="TrainerDTO">
+        SELECT 
+        		*
+        FROM 
+        		Trainer
+        WHERE 
+        		TRAINER_ID = #{trainerId}    	
+    </select>
+    
+    
 	
 <!-- 	<select id="searchTrainerIdByMemberId" resultType="String" parameterType="joinRequestDTO">
 	

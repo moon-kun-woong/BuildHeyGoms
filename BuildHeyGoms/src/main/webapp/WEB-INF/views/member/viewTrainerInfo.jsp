@@ -13,37 +13,39 @@
 
 	<style>
 		.profile-card {
-		  max-width: 600px;
-		  margin: 2rem auto;
-		  padding: 2rem;
+		  max-width: 800px;
+		  width: 100%;
+		  margin-left: 2rem auto;
+		  padding: 5rem;
 		  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 		  border-radius: 8px;
 		}
 		.profile-header {
-		  margin-bottom: 1.5rem;
+		  margin-bottom: 2rem;
 		}
 		.profile-header h1 {
-		  font-size: 1.75rem;
+		  font-size: 2rem;
 		  margin-bottom: 0.5rem;
 		}
 		.profile-header p {
 		  color: #6b7280;
 		}
 		.profile-section {
-		  margin-bottom: 1rem;
+		  margin-bottom: 2rem;
 		}
 		.profile-section h2 {
-		  font-size: 1.25rem;
+		  font-size: 1.5rem;
 		  margin-bottom: 0.5rem;
 		}
 		.profile-section p {
 		  color: #4b5563;
 		}
 		.profile-image {
-		  width: 100px;
-		  height: 100px;
+		  width: 200px;
+		  height: 200px;
 		  background-color: #e5e7eb;
-		  margin-bottom: 1rem;
+		  margin-bottom: 1.5rem;
+		  border-radius: 50%;
 		}
 	</style>
 
@@ -54,10 +56,9 @@
 		<div class="profile-header">
 			<h1 class="font-semibold">트레이너 정보</h1>
 		</div>
-		<div class="profile-image" src="https://source.unsplash.com/random/300x200?fitness"></div>
+		<img class="profile-image" src="https://source.unsplash.com/random/300x200?fitness"/>
 		<div class="profile-section">
-			<h2 class="font-semibold">${trainerDTO.trainerNm }</h2>
-			<p><strong>ID:</strong> ${trainerDTO.trainerId }</p>
+			<h2 class="font-semibold">${trainerDTO.trainerNm } 트레이너</h2>
 			<p><strong>성별:</strong> ${trainerDTO.sex }</p>
 			<p><strong>Birth Date:</strong> ${trainerDTO.birthDt }</p>
 			<p><strong>Phone:</strong> ${trainerDTO.hp }</p>
@@ -65,7 +66,7 @@
 		</div>
 		<div class="profile-section">
 			<h2 class="font-semibold">트레이너 경력란</h2>
-			<p><strong>Career Book:</strong>${trainerDTO.careerBook }</p>
+			<p><strong>Career Book: </strong>${trainerDTO.careerBook }</p>
 		</div>
 		<div class="profile-section">
 			<h2 class="font-semibold">트레이너 소개</h2>

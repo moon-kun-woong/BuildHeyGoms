@@ -285,9 +285,9 @@ public class MemberController {
     }
 
     @GetMapping("/viewTrainerInfo") // 트레이너 정보 버튼
-    public ModelAndView viewTrainerInfo(@RequestParam("classId") String classId) throws Exception {
+    public ModelAndView viewTrainerInfo(@RequestParam("trainerId") String trainerId) throws Exception {
     	
-        TrainerDTO trainerDTO = memberService.getMyTrainerInfo(classId);
+        TrainerDTO trainerDTO = memberService.getMyTrainerInfo(trainerId);
 
         ModelAndView mv = new ModelAndView("/member/viewTrainerInfo");
         mv.addObject("trainerDTO", trainerDTO);

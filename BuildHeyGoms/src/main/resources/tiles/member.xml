@@ -59,6 +59,8 @@
 	
 	
 	
+	
+	
 	<definition name="/member/memberList" extends="member">												
 		<put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp"/> 					
 		<put-attribute name="title"   value="회원리스트"/> 											

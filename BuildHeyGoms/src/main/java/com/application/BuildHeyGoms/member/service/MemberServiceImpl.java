@@ -106,6 +106,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	@Override
+	public TrainerDTO getMyTrainerInfo(String trainerId) throws Exception {
+		return memberDAO.selectOneTrainerInfo(trainerId);
+	}
+
+
 
 //	@Override
 //	public void searchTrainerIdByMemberId(TrainerDTO trainerDTO) throws Exception {

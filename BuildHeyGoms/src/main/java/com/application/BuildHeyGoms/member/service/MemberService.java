@@ -23,6 +23,6 @@ public interface MemberService {
 //	public void searchTrainerIdByMemberId(TrainerDTO trainerDTO)throws Exception;
 //	public void addJoinRequest(JoinRequestDTO joinRequestDTO)throws Exception;
 	public List<ClassDTO> getMyClasses(String memberId)throws Exception;
-	public TrainerDTO getMyTrainerInfo(String classId)throws Exception;
+	public TrainerDTO getMyTrainerInfo(String trainerId)throws Exception;
 
 }
