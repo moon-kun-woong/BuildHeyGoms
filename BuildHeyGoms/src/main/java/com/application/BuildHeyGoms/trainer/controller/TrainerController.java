@@ -295,7 +295,16 @@ public class TrainerController {
 		
 	}
     
-    
+	
+    @GetMapping("/connectedAsTrainer")
+    public ModelAndView connectedAsMember(HttpSession session) throws Exception {
+        String trainerId = (String) session.getAttribute("trainerId");
+        List<MemberDTO> memberDTO = trainerService.getMyClassMembers(trainerId);
+
+        ModelAndView mv = new ModelAndView("/trainer/connectedAsTrainer");
+        mv.addObject("memberDTO", memberDTO);
+        return mv;
+    }    
 
 	
 	

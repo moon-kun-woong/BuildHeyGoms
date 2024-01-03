@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
@@ -84,5 +85,10 @@ public class TrainerDAOImpl implements TrainerDAO {
 		sqlSession.delete("trainer.deleteClass", classId);
 	}
 	
-
+	
+	@Override
+	public List<MemberDTO> getMyClassMembers(String trainerId) throws Exception {
+		return sqlSession.selectList("trainer.getMyClassMembers", trainerId);
+	}
+	
 }

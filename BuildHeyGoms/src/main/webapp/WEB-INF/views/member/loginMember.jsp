@@ -44,7 +44,7 @@
 							$("[name='passwd']").prop("disabled" , false);
 						}
 						else {
-							location.href="${contextPath}/member/mainMember"
+							location.href="${contextPath}/member/connectedAsMember"
 							$("[name='memberId']").prop("disabled" , true);
 							$("[name='passwd']").prop("disabled" , true);
 						}

@@ -71,7 +71,7 @@
                 <nav class="bg-white shadow rounded-lg p-4">
                     <h2 class="font-semibold text-lg mb-4">Menu</h2>
                     <ul>
-                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">회원 관리</li>
+                        <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"><a href="${contextPath}/trainer/connectedAsTrainer">회원 관리</a></li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded"><a href="${contextPath}/trainer/mainTrainer">P.T 모집하기</a></li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded">개인 식단 플래너</li>
                         <li class="mb-2 cursor-pointer hover:bg-gray-100 p-2 rounded video-list-link"><a href="${contextPath}/trainer/videoList">운동 영상 목록</a></li>

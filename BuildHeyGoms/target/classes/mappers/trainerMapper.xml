@@ -108,5 +108,19 @@
     			CLASS_ID = #{classId}
     </delete>
     
-	
+    
+    <select id="getMyClassMembers" parameterType="String" resultType="MemberDTO">
+	    SELECT
+	        m.*
+	    FROM
+	        MEMBER m
+	    INNER JOIN
+	        CLASS_MEMBER cm ON m.MEMBER_ID = cm.MEMBER_ID
+	    INNER JOIN
+	        CLASS c ON cm.CLASS_ID = c.CLASS_ID
+	    WHERE
+	        c.TRAINER_ID = #{trainerId}  
+    </select>	
+    
+    
 </mapper>

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dao.TrainerDAO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
@@ -104,7 +105,10 @@ public class TrainerServiceImpl implements TrainerService{
 	}
 
 
-
+	@Override
+	public List<MemberDTO> getMyClassMembers(String trainerId) throws Exception {
+		return trainerDAO.getMyClassMembers(trainerId);
+	}
 
 
 

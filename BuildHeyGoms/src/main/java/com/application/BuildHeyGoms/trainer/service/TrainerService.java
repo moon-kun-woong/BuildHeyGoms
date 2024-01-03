@@ -2,6 +2,7 @@ package com.application.BuildHeyGoms.trainer.service;
 
 import java.util.List;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
@@ -17,5 +18,7 @@ public interface TrainerService {
 	public ClassDTO getClassScheduleDetail(String selectedDate,String trainerId) throws Exception;
 	public boolean modifyClassInfo(ClassDTO classDTO)throws Exception;
 	public void deleteClass(String classId)throws Exception;
+	public List<MemberDTO> getMyClassMembers(String trainerId)throws Exception;
 
+	
 }

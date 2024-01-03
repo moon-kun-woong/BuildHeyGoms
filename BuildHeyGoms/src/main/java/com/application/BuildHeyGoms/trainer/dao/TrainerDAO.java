@@ -3,6 +3,7 @@ package com.application.BuildHeyGoms.trainer.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 
@@ -28,6 +29,7 @@ public interface TrainerDAO {
 
 	public void deleteClass(String classId)throws Exception;
 
+	public List<MemberDTO> getMyClassMembers(String trainerId)throws Exception;
 
 
 }
