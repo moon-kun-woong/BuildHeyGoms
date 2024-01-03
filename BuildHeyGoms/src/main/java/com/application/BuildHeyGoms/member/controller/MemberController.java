@@ -156,6 +156,7 @@ public class MemberController {
 		
 	}	
 	
+	// 롤백의 증거
 	@GetMapping("/videoList")
 	public ModelAndView videoList() throws Exception {
 		return new ModelAndView("/member/videoList");
