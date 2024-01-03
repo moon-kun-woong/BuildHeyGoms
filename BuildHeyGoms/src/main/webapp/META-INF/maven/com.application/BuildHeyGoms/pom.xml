@@ -226,6 +226,14 @@
 		    <version>2.9.2</version>
 		</dependency>
 		
+		
+		<!-- YoutubeAPI 사용 -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20210307</version>
+		</dependency>			
+		
 		        
 	</dependencies>
     <build>

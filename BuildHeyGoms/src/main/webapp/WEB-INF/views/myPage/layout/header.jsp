@@ -15,7 +15,7 @@
         
         	<c:choose>
 		        <c:when test="${not empty sessionScope.memberId}">
-		            <h1 class="text-2xl font-bold"><a href="${contextPath }/member/mainMember">buildHeyGo</a></h1>
+		            <h1 class="text-2xl font-bold"><a href="${contextPath }/member/connectedAsMember">buildHeyGo</a></h1>
 		
 					<c:choose>
 						<c:when test="${sessionScope.memberId eq null }">

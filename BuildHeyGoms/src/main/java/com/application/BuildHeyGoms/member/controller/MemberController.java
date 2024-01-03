@@ -30,6 +30,8 @@ import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.member.service.MemberService;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
+import com.application.BuildHeyGoms.youtubeAPI.dto.VideoDTO;
+import com.application.BuildHeyGoms.youtubeAPI.service.YoutubeLinkService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.TextFormat.ParseException;
 
@@ -149,18 +151,29 @@ public class MemberController {
 		
 		String jsScript = "<script>";
 				jsScript += "alert('You are logged out.');";
-				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
+				jsScript += "location.href='" + request.getContextPath() + "/member/videoList';";
 				jsScript += "</script>";
 		
 		return jsScript;
 		
 	}	
 	
-	// 롤백의 증거
-	@GetMapping("/videoList")
-	public ModelAndView videoList() throws Exception {
-		return new ModelAndView("/member/videoList");
-	}
+	
+	
+    @Autowired
+    private YoutubeLinkService youtubeService;
+
+    @GetMapping("/videoList")
+    public ModelAndView getYoutubeVideos() {
+        ModelAndView mv = new ModelAndView("/member/videoList");
+        List<VideoDTO> videoDTO = youtubeService.fetchYoutubeVideos();
+        
+        System.out.println(videoDTO);
+        
+        mv.addObject("videoDTO", videoDTO);
+        return mv;
+    }
+    
 	
 	
 	@GetMapping("/memberSideMatchingScheduler")

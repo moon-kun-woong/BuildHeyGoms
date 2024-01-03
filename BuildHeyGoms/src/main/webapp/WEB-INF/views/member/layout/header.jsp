@@ -11,7 +11,7 @@
 <body>
 	
         <header class="flex justify-between items-center py-4">
-            <h1 class="text-2xl font-bold"><a href="${contextPath }/member/mainMember">buildHeyGo</a></h1>
+            <h1 class="text-2xl font-bold"><a href="${contextPath }/member/connectedAsMember">buildHeyGo</a></h1>
 
 			<c:choose>
 				<c:when test="${sessionScope.memberId eq null }">

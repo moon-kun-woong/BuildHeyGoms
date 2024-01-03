@@ -17,6 +17,8 @@
 		<typeAlias type="com.application.BuildHeyGoms.myPage.dto.ClassDTO" 			alias="ClassDTO"/>
 		<typeAlias type="com.application.BuildHeyGoms.member.dto.ClassMemberDTO" 	alias="ClassMemberDTO"/>
 		<typeAlias type="com.application.BuildHeyGoms.member.dto.JoinRequestDTO" 	alias="JoinRequestDTO"/>
+		<typeAlias type="com.application.BuildHeyGoms.youtubeAPI.dto.VideoDTO" 		alias="VideoDTO"/>
+		
 	</typeAliases>	
 
 

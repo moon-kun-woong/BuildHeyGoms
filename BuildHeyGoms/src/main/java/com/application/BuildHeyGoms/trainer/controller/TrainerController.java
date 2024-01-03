@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +31,8 @@ import com.application.BuildHeyGoms.member.dto.MemberDTO;
 import com.application.BuildHeyGoms.myPage.dto.ClassDTO;
 import com.application.BuildHeyGoms.trainer.dto.TrainerDTO;
 import com.application.BuildHeyGoms.trainer.service.TrainerService;
+import com.application.BuildHeyGoms.youtubeAPI.dto.VideoDTO;
+import com.application.BuildHeyGoms.youtubeAPI.service.YoutubeLinkService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -163,7 +166,7 @@ public class TrainerController {
 		
 		String jsScript = "<script>";
 				jsScript += "alert('You are logged out.');";
-				jsScript += "location.href='" + request.getContextPath() + "/member/mainMember';";
+				jsScript += "location.href='" + request.getContextPath() + "/member/videoList';";
 				jsScript += "</script>";
 		
 		return jsScript;
@@ -171,10 +174,21 @@ public class TrainerController {
 	}	
 	
 	
-	@GetMapping("/videoList")
-	public ModelAndView videoList() throws Exception {
-		return new ModelAndView("/trainer/videoList");
-	}
+
+    @Autowired
+    private YoutubeLinkService youtubeService;
+
+    @GetMapping("/videoList")
+    public ModelAndView getYoutubeVideos() {
+        ModelAndView mv = new ModelAndView("/trainer/videoList");
+        List<VideoDTO> videoDTO = youtubeService.fetchYoutubeVideos();
+        
+        System.out.println(videoDTO);
+        
+        mv.addObject("videoDTO", videoDTO);
+        return mv;
+    }
+	
 	
 	
 	
