@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class YoutubeAPI {
     public static void main(String[] args) throws IOException {
-        String apiKey = "AIzaSyAjaGdho36QMz3Hv09EiXfToDGQgZHrwog"; // 발급받은 YouTube Data API 키를 여기에 입력하세요.
+        String apiKey = ""; // 발급받은 YouTube Data API 키를 여기에 입력하세요.
         String searchQuery = "운동"; // 검색어
         URL url = new URL("https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQuery + "&maxResults=6&key=" + apiKey);
 
